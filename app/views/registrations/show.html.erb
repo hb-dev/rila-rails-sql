@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Run:</strong>
+  <%= @registration.run_id %>
+</p>
+
+<p>
+  <strong>Startnumber:</strong>
+  <%= @registration.startnumber %>
+</p>
+
+<p>
+  <strong>Transponder:</strong>
+  <%= @registration.transponder %>
+</p>
+
+<p>
+  <strong>Finishtime:</strong>
+  <%= @registration.finishtime %>
+</p>
+
+<p>
+  <strong>Runner title:</strong>
+  <%= @registration.runner_title %>
+</p>
+
+<p>
+  <strong>Runner name:</strong>
+  <%= @registration.runner_name %>
+</p>
+
+<p>
+  <strong>Runner firstname:</strong>
+  <%= @registration.runner_firstname %>
+</p>
+
+<p>
+  <strong>Runner street:</strong>
+  <%= @registration.runner_street %>
+</p>
+
+<p>
+  <strong>Runner city:</strong>
+  <%= @registration.runner_city %>
+</p>
+
+<p>
+  <strong>Runner zip:</strong>
+  <%= @registration.runner_zip %>
+</p>
+
+<p>
+  <strong>Runner country:</strong>
+  <%= @registration.runner_country %>
+</p>
+
+<p>
+  <strong>Runner date of birth:</strong>
+  <%= @registration.runner_date_of_birth %>
+</p>
+
+<p>
+  <strong>Runner gender:</strong>
+  <%= @registration.runner_gender %>
+</p>
+
+<p>
+  <strong>Runner contact:</strong>
+  <%= @registration.runner_contact %>
+</p>
+
+<p>
+  <strong>Runner email:</strong>
+  <%= @registration.runner_email %>
+</p>
+
+<p>
+  <strong>Runner organisation:</strong>
+  <%= @registration.runner_organisation %>
+</p>
+
+<%= link_to 'Edit', edit_registration_path(@registration) %> |
+<%= link_to 'Back', registrations_path %>

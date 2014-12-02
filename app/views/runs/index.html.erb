@@ -1,0 +1,11 @@
+<%= page_header("Läufe") %>
+
+<ul class="list-group">
+  <% @runs.each do |run| %>
+      <li class="list-group-item">
+        <%= link_to run.name, edit_event_run_path(@event, run) %>
+      </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Lauf hinzufügen', new_event_run_path(@event), class: "btn btn-primary" %>

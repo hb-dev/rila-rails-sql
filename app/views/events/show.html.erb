@@ -1,0 +1,9 @@
+<%= page_header("#{@event.name} <small>(#{l @event.event_date})</small>")%>
+
+<ul class="nav nav-pills">
+  <li><%= link_to ((iconic_icon :edit, color: :blue) + 'Veranstaltung bearbeiten'), edit_event_path(@event) %></li>
+  <li><%= link_to 'Läufe verwalten', event_runs_path(@event) %></li>
+  <li><%= link_to 'Neuen Läufer eintragen', select_run_event_path(@event) %></li>
+</ul>
+
+<%= render "registrations/registrations" %>

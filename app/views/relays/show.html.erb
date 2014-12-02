@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Run:</strong>
+  <%= @relay.run_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @relay.name %>
+</p>
+
+<%= link_to 'Edit', edit_relay_path(@relay) %> |
+<%= link_to 'Back', relays_path %>

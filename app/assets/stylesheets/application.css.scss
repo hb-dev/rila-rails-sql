@@ -1,0 +1,18 @@
+// Example using 'Cerulean' bootswatch
+//
+// First import cerulean variables
+@import "bootswatch/united/variables";
+
+// Then bootstrap itself
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "rails_bootstrap_forms";
+
+// Bootstrap body padding for fixed navbar
+body { padding-top: 40px; }
+
+// And finally bootswatch style itself
+@import "bootswatch/united/bootswatch";
+
+// Whatever application styles you have go last
+@import "base";

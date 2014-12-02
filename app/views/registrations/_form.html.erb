@@ -1,0 +1,43 @@
+<%= bootstrap_form_for([@event, @run, @registration], layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4") do |f| %>
+  <% if @registration.errors.any? %>
+    <div class="alert alert-danger">
+      <p><strong>Bitte überprüfen Sie Ihre Eingaben:</strong></p>
+      <br />
+      <ul>
+      <% @registration.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="well">
+  <%= f.static_control nil, label: "Lauf" do %>
+    <%= @run.name %>
+  <% end %>
+  <%= f.static_control nil, label: "&nbsp;".html_safe do %>
+    <%= link_to "Für anderen Lauf anmelden", select_run_event_path(@event), class: "change_run" %>
+  <% end %>
+  </div>
+  <div class="well">
+    <%= f.select :runner_title, ['Dr.', 'Prof.', 'Prof. Dr.'], prompt: 'Kein' %>
+    <%= f.text_field :runner_name %>
+    <%= f.text_field :runner_firstname %>
+    <%= f.text_field :runner_street %>
+    <%= f.text_field :runner_city %>
+    <%= f.text_field :runner_zip %>
+    <%= f.select :runner_country, options_for_select(COUNTRIES, 'Deutschland')%>
+    <%= f.date_select :runner_date_of_birth, end_year: 1900, start_year: Time.now.year - 3, prompt: { day: 'Tag..', month: 'Monat..', year: 'Jahr..' } %>    
+    <%= f.select :runner_gender, ['Männlich', 'Weiblich'], prompt: 'Bitte auswählen' %>
+  </div>
+  <div class="well">
+  <%= f.text_field :runner_organisation, help: 'Firma, Verein, KiTa, Schule, etc.' unless @run.relay? %>
+  <%= f.text_field :runner_organisation, label: 'Staffelname' if @run.relay? %>
+  <%= f.text_field :runner_email %>
+  <%= f.text_field :runner_contact if @run.max_age <= 14 %>
+  </div>
+
+  <%= f.form_group do %>
+      <%= f.submit class: 'btn btn-success' %>
+  <% end %>
+
+<% end %>

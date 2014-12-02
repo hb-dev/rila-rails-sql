@@ -1,0 +1,14 @@
+<%= bootstrap_form_for([@event, @run], layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
+    <%= f.alert_message "Please fix the errors below." %>
+
+    <%= f.text_field :name %>
+    <%= f.text_field :min_age, type: :number %>
+    <%= f.text_field :max_age, type: :number %>
+    <%= f.form_group do %>
+    	<%= f.check_box :relay %>
+    <% end %>
+    <%= f.form_group do %>
+        <%= f.submit %>
+    <% end %>
+
+<% end %>
