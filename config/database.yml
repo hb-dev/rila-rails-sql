@@ -57,9 +57,9 @@ production:
   adapter: postgresql
   encoding: utf8
   pool: 5
-  database: <%= "'#{ ENV['ELEPHANTSQL_DATABASE'] }'" %>
-  host: <%= "'#{ ENV['ELEPHANTSQL_HOSTNAME'] }'" %>
-  port: <%= ENV["ELEPHANTSQL_PORT"] %>
-  username: <%= "'#{ ENV['ELEPHANTSQL_USERNAME'] }'" %>
-  password: <%= "'#{ ENV['ELEPHANTSQL_PASSWORD'] }'" %>
+  database: avrrergx
+  host: horton.elephantsql.com
+  port: 5432
+  username: avrrergx
+  password: qsW8HxMkIgBoSmcAZ8DCLXswX8byRLAj
   timeout: 5000
