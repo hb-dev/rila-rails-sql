@@ -45,12 +45,12 @@ gem 'simple-navigation-bootstrap'
 gem 'bootstrap_form'
 gem 'rails-bootstrap-helpers'
 gem "nested_form"
+gem 'spreadsheet'
 
 
 group :development do
   gem 'better_errors'
   gem "binding_of_caller"
-  gem 'spreadsheet'
 end
 
 
