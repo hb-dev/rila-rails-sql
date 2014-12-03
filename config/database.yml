@@ -48,6 +48,18 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  <<: *default
+  database: rila-rails-sql_production
+  username: rila-rails-sql
+  password: <%= ENV['RILA-RAILS-SQL_DATABASE_PASSWORD'] %>
+
+production:
   adapter: postgresql
   encoding: utf8
   pool: 5
+  database: <%= "'#{ ENV['ELEPHANTSQL_DATABASE'] }'" %>
+  host: <%= "'#{ ENV['ELEPHANTSQL_HOSTNAME'] }'" %>
+  port: <%= ENV["ELEPHANTSQL_PORT"] %>
+  username: <%= "'#{ ENV['ELEPHANTSQL_USERNAME'] }'" %>
+  password: <%= "'#{ ENV['ELEPHANTSQL_PASSWORD'] }'" %>
+  timeout: 5000
