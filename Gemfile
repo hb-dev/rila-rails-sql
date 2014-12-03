@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -50,4 +51,12 @@ gem "nested_form"
 group :development do
   gem 'better_errors'
   gem "binding_of_caller"
+  gem 'spreadsheet'
+end
+
+
+group :production do
+  gem 'pg'
+  gem 'cloudcontrol-rails', '0.0.6'
+	gem 'rails_12factor'
 end

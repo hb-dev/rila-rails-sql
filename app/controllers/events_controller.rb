@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @registrations = @event.registrations
+    @registrations = @event.registrations.order(:finishtime)
   end
 
   # GET /events/new

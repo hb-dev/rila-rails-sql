@@ -45,7 +45,7 @@ class RunsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def run_params
-    params.require(:run).permit(:name, :min_age, :max_age, :relay)
+    params.require(:run).permit(:name, :min_age, :max_age, :relay, :price_adult_pre, :price_adult, :price_child_pre, :price_child)
   end
 
 end

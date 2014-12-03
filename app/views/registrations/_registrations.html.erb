@@ -20,7 +20,7 @@
         <tr>
           <td><%= registration.run.name %></td>
           <td><%= registration.startnumber %></td>
-          <td>MHK</td>
+          <td><%= registration.age_group %></td>
           <td><%= registration.finishtime.blank? ? "00:00:00" : (l registration.finishtime, format: :time) %></td>
           <td><%= link_to registration.runner_display_name, event_run_registration_path(@event, registration.run,registration) %></td>
           <td><%= l registration.runner_date_of_birth %></td>

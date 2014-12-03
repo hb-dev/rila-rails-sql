@@ -21,7 +21,56 @@ class Registration < ActiveRecord::Base
 	end
 
 	def runner_display_name
-		[runner_title, runner_firstname, runner_name].reject(&:empty?).join(' ')
+		[runner_title.to_s, runner_firstname, runner_name].reject(&:empty?).join(' ')
+	end
+
+	def age_groups
+		{
+			0 => 'minis',
+			6 => 6,
+			7 => 7,
+			8 => 8,
+			9 => 9,
+			10 => 10,
+			11 => 11,
+			12 => 12,
+			13 => 13,
+			14 => 14,
+			15 => 15,
+			16 => 'JB',
+			17 => 'JA',
+			18 => 'HK',
+			30 => 30,
+			35 => 35,
+			40 => 40,
+			45 => 45,
+			50 => 50,
+			55 => 55,
+			60 => 60,
+			65 => 65,
+			70 => 70,
+			75 => 75,
+			80 => 80,
+			85 => 85
+		}
+	end
+
+	def age_group
+		age = age(runner_date_of_birth)
+		gender = runner_gender[0,1]
+		the_age_group = ""
+		age_groups.each do |group|
+			the_age_group = group[1] if group[0] <= age
+		end
+		gender + the_age_group.to_s
+	end
+
+	def price
+		age = age(runner_date_of_birth)
+		age_name = age <= 18 ? "child" : "adult"
+		pre = Date.today < "#{run.event.event_date.year}-07-01".to_date ? "_pre" : ""
+		price_method_name = "price_" + age_name + pre
+		run.send(price_method_name)
 	end
 
 end

@@ -1,9 +1,16 @@
-<%= bootstrap_form_for([@event, @run], layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
+<%= bootstrap_form_for([@event, @run], layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-3") do |f| %>
     <%= f.alert_message "Please fix the errors below." %>
 
     <%= f.text_field :name %>
-    <%= f.text_field :min_age, type: :number %>
-    <%= f.text_field :max_age, type: :number %>
+    <h3>Alter</h3>
+    <%= f.number_field :min_age %>
+    <%= f.number_field :max_age %>
+    <h3>Preis</h3>
+    <%= f.number_field :price_adult_pre, prepend: "€", step: 'any' %>
+    <%= f.number_field :price_adult, prepend: "€" %>
+    <%= f.number_field :price_child_pre, prepend: "€" %>
+    <%= f.number_field :price_child, prepend: "€" %>
+    <hr />
     <%= f.form_group do %>
     	<%= f.check_box :relay %>
     <% end %>
