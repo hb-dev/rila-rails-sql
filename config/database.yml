@@ -48,7 +48,6 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: rila-rails-sql_production
-  username: rila-rails-sql
-  password: <%= ENV['RILA-RAILS-SQL_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
