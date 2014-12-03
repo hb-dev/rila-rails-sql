@@ -47,19 +47,15 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: rila-rails-sql_production
-  username: rila-rails-sql
-  password: <%= ENV['RILA-RAILS-SQL_DATABASE_PASSWORD'] %>
+
 
 production:
   adapter: postgresql
   encoding: utf8
   pool: 5
-  database: avrrergx
-  host: horton.elephantsql.com
-  port: 5432
-  username: avrrergx
-  password: qsW8HxMkIgBoSmcAZ8DCLXswX8byRLAj
+  database: #avrrergx
+  host: #horton.elephantsql.com
+  port: #5432
+  username: #avrrergx
+  password: #qsW8HxMkIgBoSmcAZ8DCLXswX8byRLAj
   timeout: 5000
