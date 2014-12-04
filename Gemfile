@@ -45,7 +45,7 @@ gem 'bootstrap_form'
 gem 'rails-bootstrap-helpers'
 gem "nested_form"
 gem 'spreadsheet'
-
+gem 'seed_dump'
 
 group :development do
   gem 'better_errors'

@@ -3,7 +3,7 @@
 <ul class="list-group">
   <% @runs.each do |run| %>
       <li class="list-group-item">
-        <%= link_to run.name, edit_event_run_path(@event, run) %>
+        <%= link_to run.name, edit_event_run_path(@event, run) %> | <%= run.registrations.count %>
       </li>
   <% end %>
 </ul>

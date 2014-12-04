@@ -53,9 +53,9 @@ production:
   adapter: postgresql
   encoding: utf8
   pool: 5
-  database: #avrrergx
-  host: #horton.elephantsql.com
-  port: #5432
-  username: #avrrergx
-  password: #qsW8HxMkIgBoSmcAZ8DCLXswX8byRLAj
+  database:
+  host:
+  port: 
+  username: 
+  password: 
   timeout: 5000
