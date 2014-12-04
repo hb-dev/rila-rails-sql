@@ -1,8 +1,8 @@
-Event.create!([
+Event.new([
   {name: "4. Ringelnatzlauf", event_date: "2014-08-10"},
   {name: "5. Ringelnatzlauf", event_date: "2015-08-09"}
-])
-Registration.create!([
+]).save(validate: false)
+Registration.new([
   {run_id: 7, startnumber: 1097, transponder: nil, finishtime: "2000-01-01 00:34:32", runner_title: nil, runner_name: "Thomas", runner_firstname: "Eric", runner_street: nil, runner_city: nil, runner_zip: nil, runner_country: nil, runner_date_of_birth: "1985-01-01", runner_gender: "Männlich", runner_contact: nil, runner_email: nil, runner_organisation: "SALOMON-LEKI-Racingteam", event_id: 1, relay_id: nil},
   {run_id: 7, startnumber: 1131, transponder: nil, finishtime: "2000-01-01 00:38:18", runner_title: nil, runner_name: "Reis", runner_firstname: "Tobias", runner_street: nil, runner_city: nil, runner_zip: nil, runner_country: nil, runner_date_of_birth: "1994-01-01", runner_gender: "Männlich", runner_contact: nil, runner_email: nil, runner_organisation: "TSV Einheit Grimma", event_id: 1, relay_id: nil},
   {run_id: 7, startnumber: 1127, transponder: nil, finishtime: "2000-01-01 00:38:56", runner_title: nil, runner_name: "Voß", runner_firstname: "Michael", runner_street: nil, runner_city: nil, runner_zip: nil, runner_country: nil, runner_date_of_birth: "1974-01-01", runner_gender: "Männlich", runner_contact: nil, runner_email: nil, runner_organisation: "SC DHfK Leipzig", event_id: 1, relay_id: nil},
@@ -324,13 +324,13 @@ Registration.create!([
   {run_id: 5, startnumber: 53, transponder: nil, finishtime: nil, runner_title: nil, runner_name: "Töpler", runner_firstname: "Anni", runner_street: nil, runner_city: nil, runner_zip: nil, runner_country: nil, runner_date_of_birth: "2010-01-01", runner_gender: "Weiblich", runner_contact: nil, runner_email: nil, runner_organisation: "KiTa Märchenland Wurzen", event_id: 1, relay_id: nil},
   {run_id: 5, startnumber: 54, transponder: nil, finishtime: nil, runner_title: nil, runner_name: "Augst", runner_firstname: "Jan", runner_street: nil, runner_city: nil, runner_zip: nil, runner_country: nil, runner_date_of_birth: "2010-01-01", runner_gender: "Männlich", runner_contact: nil, runner_email: nil, runner_organisation: "ev. Kita Arche Noah", event_id: 1, relay_id: nil},
   {run_id: 5, startnumber: 55, transponder: nil, finishtime: nil, runner_title: nil, runner_name: "Goldgrebe", runner_firstname: "Felix", runner_street: nil, runner_city: nil, runner_zip: nil, runner_country: nil, runner_date_of_birth: "2010-01-01", runner_gender: "Männlich", runner_contact: nil, runner_email: nil, runner_organisation: "SV Falkenhain", event_id: 1, relay_id: nil}
-])
-Relay.create!([
+]).save(validate: false)
+Relay.new([
   {run_id: nil, name: "", contact_title: nil, contact_name: nil, contact_firstname: nil, contact_street: nil, contact_city: nil, contact_zip: nil, contact_country: nil, contact_email: nil},
   {run_id: nil, name: "", contact_title: nil, contact_name: nil, contact_firstname: nil, contact_street: nil, contact_city: nil, contact_zip: nil, contact_country: nil, contact_email: nil},
   {run_id: 8, name: "Hundestaffel", contact_title: nil, contact_name: nil, contact_firstname: nil, contact_street: nil, contact_city: nil, contact_zip: nil, contact_country: nil, contact_email: nil}
-])
-Run.create!([
+]).save(validate: false)
+Run.new([
   {name: "5km Walking / N. Walking", min_age: 12, max_age: 99, relay: false, event_id: 1, price_adult_pre: "7.0", price_child_pre: "4.0", price_adult: "9.0", price_child: "6.0"},
   {name: "1,2km Kinderlauf (6-8 Jahre)", min_age: 6, max_age: 8, relay: false, event_id: 1, price_adult_pre: nil, price_child_pre: nil, price_adult: nil, price_child: nil},
   {name: "2,4km Kinderlauf (9-10 Jahre)", min_age: 9, max_age: 10, relay: false, event_id: 1, price_adult_pre: nil, price_child_pre: nil, price_adult: nil, price_child: nil},
@@ -339,4 +339,4 @@ Run.create!([
   {name: "5km Lauf", min_age: 12, max_age: 99, relay: false, event_id: 1, price_adult_pre: "7.0", price_child_pre: "4.0", price_adult: "9.0", price_child: "6.0"},
   {name: "10km Lauf - Einzelstarter", min_age: 12, max_age: 99, relay: false, event_id: 1, price_adult_pre: nil, price_child_pre: nil, price_adult: nil, price_child: nil},
   {name: "10km Lauf - Staffel (4x2,5km)", min_age: 12, max_age: 99, relay: true, event_id: 1, price_adult_pre: nil, price_child_pre: nil, price_adult: nil, price_child: nil}
-])
+]).save(validate: false)
