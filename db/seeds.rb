@@ -330,4 +330,4 @@ Run.new(name: "3,6km Kinderlauf (11-12 Jahre)", min_age: 11, max_age: 12, relay:
 Run.new(name: "200m Minilauf (3-5 Jahre)", min_age: 3, max_age: 5, relay: false, event_id: 1, price_adult_pre: nil, price_child_pre: nil, price_adult: nil, price_child: nil).save(validate: false)
 Run.new(name: "5km Lauf", min_age: 12, max_age: 99, relay: false, event_id: 1, price_adult_pre: "7.0", price_child_pre: "4.0", price_adult: "9.0", price_child: "6.0").save(validate: false)
 Run.new(name: "10km Lauf - Einzelstarter", min_age: 12, max_age: 99, relay: false, event_id: 1, price_adult_pre: nil, price_child_pre: nil, price_adult: nil, price_child: nil).save(validate: false)
-Run.new(name: "10km Lauf - Staffel (4x2,5km)", min_age: 12, max_age: 99, relay: true, event_id: 1, price_adult_pre: nil, price_child_pre: nil, price_adult: nil, price_child: nil.save(validate: false)
+Run.new(name: "10km Lauf - Staffel (4x2,5km)", min_age: 12, max_age: 99, relay: true, event_id: 1, price_adult_pre: nil, price_child_pre: nil, price_adult: nil, price_child: nil).save(validate: false)
