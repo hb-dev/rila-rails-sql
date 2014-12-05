@@ -1,10 +1,14 @@
 class Registration < ActiveRecord::Base
 	belongs_to :run
 	belongs_to :relay
-
 	validates :runner_name, :runner_firstname, :runner_gender, :runner_date_of_birth, presence:true
 	validates :runner_street, :runner_city, :runner_zip, :runner_country, :runner_email, presence:true, unless: "run.relay?"
 	validate :valid_age
+	
+	before_save :set_age_group
+
+	scope "Männlich", -> {where(runner_gender: "Männlich")}
+	scope "Weiblich", -> {where(runner_gender: "Weiblich")}
 	
 	def valid_age
 		if !runner_date_of_birth.nil? 	
@@ -55,7 +59,7 @@ class Registration < ActiveRecord::Base
 		}
 	end
 
-	def age_group
+	def calculate_age_group
 		age = age(runner_date_of_birth)
 		gender = runner_gender[0,1]
 		the_age_group = ""
@@ -65,12 +69,40 @@ class Registration < ActiveRecord::Base
 		gender + the_age_group.to_s
 	end
 
+	def set_age_group
+		self.age_group = calculate_age_group
+	end
+
 	def price
 		age = age(runner_date_of_birth)
 		age_name = age <= 18 ? "child" : "adult"
 		pre = Date.today < "#{run.event.event_date.year}-07-01".to_date ? "_pre" : ""
 		price_method_name = "price_" + age_name + pre
 		run.send(price_method_name)
+	end
+
+	def compeditors
+		Registration.where(run_id: run.id)
+	end
+
+	def compeditors_in_front(compeditors)
+		finishtime.nil? ? "" : compeditors.where("finishtime < ?", finishtime).count + 1
+	end
+
+	def compeditors_same_age_group
+		self.compeditors.where(age_group: age_group)
+	end
+
+	def place		
+		compeditors_in_front(self.compeditors)
+	end
+
+	def place_gender(gender)
+		gender == runner_gender ? compeditors_in_front(self.compeditors.send(gender)) : ""
+	end
+
+	def place_age_group
+		compeditors_in_front(self.compeditors_same_age_group)
 	end
 
 end

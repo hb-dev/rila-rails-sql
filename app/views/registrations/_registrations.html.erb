@@ -7,6 +7,10 @@
         <th>Startnr.</th>
         <th>AK</th>
         <th>Zielzeit</th>
+        <th>Platz</th>
+        <th>Platz M</th>
+        <th>Platz W</th>
+        <th>Platz AK</th>
         <th>Läufer</th>
         <th>Geburtsdatum</th>
         <th>Geschlecht</th>
@@ -22,6 +26,10 @@
           <td><%= registration.startnumber %></td>
           <td><%= registration.age_group %></td>
           <td><%= registration.finishtime.blank? ? "00:00:00" : (l registration.finishtime, format: :time) %></td>
+          <td><%= registration.place %>
+          <td><%= registration.place_gender("Männlich") %>
+          <td><%= registration.place_gender("Weiblich") %>
+          <td><%= registration.place_age_group %>
           <td><%= link_to registration.runner_display_name, event_run_registration_path(@event, registration.run,registration) %></td>
           <td><%= l registration.runner_date_of_birth %></td>
           <td><%= registration.runner_gender %></td>
