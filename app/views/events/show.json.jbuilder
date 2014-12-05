@@ -11,6 +11,6 @@ json.runs @event.runs do |run|
 		json.place_male	registration.place_gender("Männlich")
 		json.place_female	registration.place_gender("Weiblich")
 		json.place_age_group registration.place_age_group
-		json.organistation registration.runner_organisation
+		json.organisation registration.runner_organisation
 	end
 end
