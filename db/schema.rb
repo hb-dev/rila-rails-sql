@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209163425) do
+ActiveRecord::Schema.define(version: 20141209213209) do
 
   create_table "enrollments", force: true do |t|
     t.integer  "run_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20141209163425) do
     t.string   "contact_email"
     t.integer  "event_id"
     t.string   "age_group"
+    t.integer  "startnumber"
   end
 
   create_table "runs", force: true do |t|

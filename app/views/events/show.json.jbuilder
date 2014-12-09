@@ -15,4 +15,13 @@ json.runs @event.runs do |run|
 		json.place_age_group enrollment.place_age_group
 		json.organisation enrollment.runner_organisation
 	end
+	json.relays run.relays do |relay|
+		json.name relay.name
+		json.startnumber relay.startnumber
+		json.runners relay.runners_string
+		json.age_group relay.age_group
+		json.finishtime relay.finishtime
+		json.place relay.place
+		json.place_age_group relay.place_age_group
+	end
 end
