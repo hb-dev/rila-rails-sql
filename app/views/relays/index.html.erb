@@ -1,22 +1,3 @@
-<h1>Listing relays</h1>
+<%= page_header @run.name %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Run</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @relays.each do |relay| %>
-      <tr>
-        <td><%= relay.run_id %></td>
-        <td><%= relay.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<%= render "relays" %> 

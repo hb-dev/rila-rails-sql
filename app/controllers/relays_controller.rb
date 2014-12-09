@@ -1,4 +1,7 @@
 class RelaysController < ApplicationController
+  
+  before_action :authenticate_user!
+
   before_action :set_relay, only: [:show, :edit, :update, :destroy]
   before_action :set_event
   before_action :set_run
@@ -6,7 +9,7 @@ class RelaysController < ApplicationController
   # GET /relays
   # GET /relays.json
   def index
-    @relays = Relay.all
+    @relays = @run.relays
   end
 
   # GET /relays/1
@@ -17,7 +20,8 @@ class RelaysController < ApplicationController
   # GET /relays/new
   def new
     @relay = @run.relays.new
-    4.times {@relay.registrations.build(run_id: @run.id, event_id: @event.id)}
+    #raise
+    4.times {@relay.registrations.build(run_id: @run.id, event_id: @event.id)} if @relay.new_record?
   end
 
   # GET /relays/1/edit
@@ -29,8 +33,8 @@ class RelaysController < ApplicationController
   def create
     @relay = @run.relays.new(relay_params)
     respond_to do |format|
-      if @relay.save
-        format.html { redirect_to @relay, notice: 'Relay was successfully created.' }
+      if @relay.save#(validate: false)
+        format.html { redirect_to event_run_relays_path(@event, @run), notice: 'Relay was successfully created.' }
         format.json { render :show, status: :created, location: @relay }
       else
         format.html { render :new }
@@ -44,7 +48,7 @@ class RelaysController < ApplicationController
   def update
     respond_to do |format|
       if @relay.update(relay_params)
-        format.html { redirect_to @relay, notice: 'Relay was successfully updated.' }
+        format.html { redirect_to event_run_relays_path(@event, @run), notice: 'Relay was successfully updated.' }
         format.json { render :show, status: :ok, location: @relay }
       else
         format.html { render :edit }
@@ -71,7 +75,7 @@ class RelaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relay_params
-      params.require(:relay).permit(:run_id, :name, :contact_title, :contact_name, :contact_firstname, :contact_street, :contact_city, :contact_zip, :contact_country, :contact_email, registrations_attributes: [:runner_title, :runner_name, :runner_firstname, :runner_gender, :run_id, :event_id, :runner_date_of_birth])
+      params.require(:relay).permit(:run_id, :name, :contact_title, :contact_name, :contact_firstname, :contact_street, :contact_city, :contact_zip, :contact_country, :contact_email, registrations_attributes: [ :id, :runner_title, :runner_name, :runner_firstname, :runner_gender, :run_id, :event_id, :runner_date_of_birth])
     end
 
     def set_event

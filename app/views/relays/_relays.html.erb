@@ -1,0 +1,35 @@
+<h3>Anmeldungen</h1>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Staffelname</th>
+        <th>Zielzeit</th>
+        <th>Läufer</th>
+        <th>AK</th>
+        <th>Platz</th>
+        <th>Platz AK</th>
+        <th>Urkunde</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @relays.each do |relay| %>
+        <tr>
+          <td><%= relay.name %></td>
+          <td><%= l relay.finishtime, format: :time %></td>
+          <td><%= relay.runners_string %></td>
+          <td><%= relay.age_group %></td>
+          <td><%= relay.place %>
+          <td><%= relay.place_age_group %>
+          <td><%= link_to "Urkunde", certificate_link_relay(relay) %></td>
+          <td><%= link_to 'Bearbeiten', edit_event_run_relay_path(@event,relay.run, relay) %></td>
+          <td><%= link_to 'Löschen', event_run_relay_path(@event, relay.run, relay), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+

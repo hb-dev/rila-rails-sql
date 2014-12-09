@@ -1,9 +1,9 @@
 class Registration < ActiveRecord::Base
 	belongs_to :run
 	belongs_to :relay
-	validates :runner_name, :runner_firstname, :runner_gender, :runner_date_of_birth, presence:true
-	validates :runner_street, :runner_city, :runner_zip, :runner_country, :runner_email, presence:true, unless: "run.relay?"
-	validate :valid_age
+	#validates :runner_name, :runner_firstname, :runner_gender, :runner_date_of_birth, presence:true
+	#validates :runner_street, :runner_city, :runner_zip, :runner_country, :runner_email, presence:true, unless: "run.relay?"
+	#validate :valid_age
 	
 	before_save :set_age_group
 
@@ -82,7 +82,7 @@ class Registration < ActiveRecord::Base
 	end
 
 	def compeditors
-		Registration.where(run_id: run.id)
+		@compeditors ||= Registration.where(run_id: run.id)
 	end
 
 	def compeditors_in_front(compeditors)

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
+  resources :certificates, only: ['index','show']
+
   resources :events do
     resources :runs do 
       resources :relays

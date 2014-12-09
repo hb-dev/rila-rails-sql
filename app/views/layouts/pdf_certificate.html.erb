@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<style type="text/css">
+			body {
+				font-family: verdana, sans-serif;
+				font-size: 28px;
+				margin: 0px;
+				padding: 0px;
+			    height: 100%;
+			}
+
+			.watermark {
+			    background-attachment: scroll;
+			    background-clip: border-box;
+			    background-color: transparent;
+			    background-image:url('<%= "file://#{Rails.root.join('app', 'assets','images','certificates', @year+ '.jpg')}" %>');
+			    background-origin: padding-box;
+			    background-position: center center;
+			    background-repeat: repeat;
+			    background-size: 1040px 1471px;
+			    bottom: 0;
+			    height: 1471px;
+			    left: 0;
+			    position: absolute;
+			    right: 0;
+			    width: 1040px;
+			    z-index: -1000;
+			}	
+
+			#watermark1 {
+			    top: 0;
+			}	
+			h1, h2, p {
+				padding: 0;
+				margin: 0;
+			}
+			h1 {
+				font-size: 50px;
+				margin-bottom: 30px;
+				font-weight: bold;
+			}
+			h2 {
+				font-size: 40px;
+				margin-bottom: 0px;
+				font-weight: normal;
+			}
+			h3 {
+				font-weight: normal;
+				margin-top: 0px;
+				font-size: 30px;
+			}
+			p {
+				margin-bottom: 20px;
+			}
+
+			p.time {
+				font-size: 40px;
+				font-weight: bold;
+				margin-top: 20px;
+				margin-bottom: 30px;
+			}
+
+			p.mainplace {
+				font-weight: bold;
+				font-size: 85px;
+				margin-bottom: 0px;
+			}
+
+			p.secplace{
+				font-weight: bold;
+				font-size: 40px;
+				margin-top: 20px;;
+			}
+
+			.relay p.secplace {
+				margin-top: 20px;
+			}
+
+			.relay p.time {
+				margin-top: 20px;
+				margin-bottom: 30px;
+			}
+
+			.relay p {
+				margin-bottom: 20px;
+			}
+
+			.relay h1 {
+				margin-bottom: 30px;
+			}
+
+			span.big {
+				font-size: 33px;
+				margin-right: 10px;
+			}
+			span.small {
+				font-size: 17px;
+			}
+			.textfield {
+				position: absolute;
+				top: 640px;
+				left: 90px;
+				width: 500px;
+			}
+
+			span.title {
+				display: block;
+				font-size: 30px;
+				font-weight: normal;
+			}
+			p.secplace .title {
+				margin-top: 5px;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<div id="watermark1" class="watermark"></div>
+		<%= yield %>
+	</body>
+</html>
