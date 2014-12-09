@@ -11,14 +11,14 @@ module ApplicationHelper
     </ div>".html_safe
   end
 
-  def certificates_html(registration)
+  def certificates_html(enrollment)
     html = "<div class='textfield'>" +
-    "<h1>#{registration.run.name.gsub('(', '<br />(')}</h1>" +
-    "<h2>#{registration.runner_display_name}</h2>" +
-    "<h3>#{registration.runner_organisation}</h3>" + 
-    "<p class='time'>#{registration.finishtime.blank? ? "" : (l registration.finishtime, format: :time)}</p>" +
-    "<p class='mainplace'>#{registration.place}. Platz <span class='title'>in der Gesamtwertung</span></p>" +
-    "<p class='secplace'>#{registration.place_age_group}. Platz <span class='title'>in der AK #{registration.age_group}<span/></p>" +
+    "<h1>#{enrollment.run.name.gsub('(', '<br />(')}</h1>" +
+    "<h2>#{enrollment.runner_display_name}</h2>" +
+    "<h3>#{enrollment.runner_organisation}</h3>" + 
+    "<p class='time'>#{enrollment.finishtime.blank? ? "" : (l enrollment.finishtime, format: :time)}</p>" +
+    "<p class='mainplace'>#{enrollment.place}. Platz <span class='title'>in der Gesamtwertung</span></p>" +
+    "<p class='secplace'>#{enrollment.place_age_group}. Platz <span class='title'>in der AK #{enrollment.age_group}<span/></p>" +
     "</div>"
     Base64.encode64(html)
   end
@@ -35,8 +35,8 @@ module ApplicationHelper
     Base64.encode64(html)
   end  
 
-  def certificate_link(registration)
-    certificates_url + "/" + certificates_html(registration) + "?year=" + registration.run.event.event_date.year.to_s
+  def certificate_link(enrollment)
+    certificates_url + "/" + certificates_html(enrollment) + "?year=" + enrollment.run.event.event_date.year.to_s
   end
 
   def certificate_link_relay(relay)

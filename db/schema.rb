@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20141209124037) do
     t.datetime "updated_at"
   end
 
-  create_table "registrations", force: true do |t|
+  create_table "enrollments", force: true do |t|
     t.integer  "run_id"
     t.integer  "startnumber"
     t.integer  "transponder"

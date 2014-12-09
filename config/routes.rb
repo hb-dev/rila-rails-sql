@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :runs do 
       resources :relays
-      resources :registrations
+      resources :enrollments
     end
     member do
       get 'select_run'

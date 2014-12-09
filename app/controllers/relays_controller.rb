@@ -21,7 +21,7 @@ class RelaysController < ApplicationController
   def new
     @relay = @run.relays.new
     #raise
-    4.times {@relay.registrations.build(run_id: @run.id, event_id: @event.id)} if @relay.new_record?
+    4.times {@relay.enrollments.build(run_id: @run.id, event_id: @event.id)} if @relay.new_record?
   end
 
   # GET /relays/1/edit
@@ -75,7 +75,7 @@ class RelaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relay_params
-      params.require(:relay).permit(:run_id, :name, :contact_title, :contact_name, :contact_firstname, :contact_street, :contact_city, :contact_zip, :contact_country, :contact_email, registrations_attributes: [ :id, :runner_title, :runner_name, :runner_firstname, :runner_gender, :run_id, :event_id, :runner_date_of_birth])
+      params.require(:relay).permit(:run_id, :name, :contact_title, :contact_name, :contact_firstname, :contact_street, :contact_city, :contact_zip, :contact_country, :contact_email, enrollments_attributes: [ :id, :runner_title, :runner_name, :runner_firstname, :runner_gender, :run_id, :event_id, :runner_date_of_birth])
     end
 
     def set_event

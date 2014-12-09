@@ -20,7 +20,7 @@
         <% bar.tab "Läufer 2" %>
         <% bar.tab "Läufer 3" %>
         <% bar.tab "Läufer 4" %>
-        <%= f.fields_for :registrations do |nf| %>
+        <%= f.fields_for :enrollments do |nf| %>
           <% bar.tab_pane do %>         
             <%= nf.select :runner_title, ['Dr.', 'Prof.', 'Prof. Dr.'], prompt: 'Kein' %>
             <%= nf.text_field :runner_name %>

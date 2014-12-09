@@ -1,0 +1,47 @@
+<h3>Anmeldungen</h1>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Run</th>
+        <th>Startnr.</th>
+        <th>AK</th>
+        <th>Zielzeit</th>
+        <th>Platz</th>
+        <th>Platz M</th>
+        <th>Platz W</th>
+        <th>Platz AK</th>
+        <th>Läufer</th>
+        <th>Geburtsdatum</th>
+        <th>Geschlecht</th>
+        <th>Organisation / Staffelname</th>
+        <th>Urkunde</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @enrollments.each do |enrollment| %>
+        <tr>
+          <td><%= enrollment.run.name %></td>
+          <td><%= enrollment.startnumber %></td>
+          <td><%= enrollment.age_group %></td>
+          <td><%= enrollment.finishtime.blank? ? "00:00:00" : (l enrollment.finishtime, format: :time) %></td>
+          <td><%= enrollment.place %>
+          <td><%= enrollment.place_gender("Männlich") %>
+          <td><%= enrollment.place_gender("Weiblich") %>
+          <td><%= enrollment.place_age_group %>
+          <td><%= link_to enrollment.runner_display_name, event_run_enrollment_path(@event, enrollment.run,enrollment) %></td>
+          <td><%= l enrollment.runner_date_of_birth %></td>
+          <td><%= enrollment.runner_gender %></td>
+          <td><%= enrollment.runner_organisation %></td>
+          <td><%= link_to "Urkunde", certificate_link(enrollment) %></td>
+          <td><%= link_to 'Bearbeiten', edit_event_run_enrollment_path(@event,enrollment.run, enrollment) %></td>
+          <td><%= link_to 'Löschen', event_run_enrollment_path(@event, enrollment.run, enrollment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+
