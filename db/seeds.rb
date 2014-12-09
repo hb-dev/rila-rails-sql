@@ -1,6 +1,3 @@
-User.create!([
-  {email: "hb@enovate.de",password: "rilagg1", password_confirmation: "rilagg1"  }
-])
 Event.create!([
   {name: "4. Ringelnatzlauf", event_date: "2014-08-10"}
 ])
