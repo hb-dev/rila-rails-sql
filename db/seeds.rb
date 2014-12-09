@@ -1,5 +1,5 @@
 User.create!([
-  {email: "hb@enovate.de", encrypted_password: "$2a$10$7hLjHLHkAPS128RGuH14aumV2KfVYrlqysiZ8GW4aTq48rtdg9pJi", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2014-12-09 12:54:01", last_sign_in_at: "2014-12-09 12:54:01", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
+  {email: "hb@enovate.de",password: "rilagg1", password_confirmation: "rilagg1"  }
 ])
 Event.create!([
   {name: "4. Ringelnatzlauf", event_date: "2014-08-10"}
