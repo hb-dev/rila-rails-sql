@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209124037) do
-
-  create_table "events", force: true do |t|
-    t.string   "name"
-    t.date     "event_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20141209163425) do
 
   create_table "enrollments", force: true do |t|
     t.integer  "run_id"
@@ -42,6 +35,13 @@ ActiveRecord::Schema.define(version: 20141209124037) do
     t.integer  "event_id"
     t.integer  "relay_id"
     t.string   "age_group"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.date     "event_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "relays", force: true do |t|
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20141209124037) do
     t.decimal  "price_child_pre", precision: 4, scale: 2
     t.decimal  "price_adult",     precision: 4, scale: 2
     t.decimal  "price_child",     precision: 4, scale: 2
+    t.boolean  "minis"
   end
 
   create_table "users", force: true do |t|

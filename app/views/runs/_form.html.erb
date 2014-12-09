@@ -12,7 +12,10 @@
     <%= f.number_field :price_child, prepend: "€" %>
     <hr />
     <%= f.form_group do %>
-    	<%= f.check_box :relay %>
+        <%= f.check_box :relay %>
+    <% end %>
+    <%= f.form_group do %>
+    	<%= f.check_box :minis %>
     <% end %>
     <%= f.form_group do %>
         <%= f.submit %>

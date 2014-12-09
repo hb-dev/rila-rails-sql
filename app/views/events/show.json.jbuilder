@@ -2,6 +2,8 @@ json.name @event.name
 json.date @event.event_date
 json.runs @event.runs do |run|
 	json.name run.name	
+	json.relay run.relay
+	json.minis run.minis
 	json.enrollments run.enrollments do |enrollment|
 		json.startnumber enrollment.startnumber
 		json.name enrollment.runner_display_name
