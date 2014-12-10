@@ -17,7 +17,7 @@ json.cache! do
 			json.organisation enrollment.runner_organisation
 			json.certificate_url run.minis ? "http://ringelnatzlauf.de/images/Urkunde_Minilauf.pdf" : certificate_link(enrollment)
 		end
-		json.relays run.relays do |relay|
+		json.relays run.relays.sort_by{|relay| relay[:finishtime]} do |relay|
 			json.name relay.name
 			json.startnumber relay.startnumber
 			json.runners relay.runners_string
