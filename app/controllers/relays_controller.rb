@@ -75,7 +75,7 @@ class RelaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relay_params
-      params.require(:relay).permit(:run_id, :name, :contact_title, :contact_name, :contact_firstname, :contact_street, :contact_city, :contact_zip, :contact_country, :contact_email, enrollments_attributes: [ :id, :runner_title, :runner_name, :runner_firstname, :runner_gender, :run_id, :event_id, :runner_date_of_birth])
+      params.require(:relay).permit(:run_id, :startnumber, :name, :contact_title, :contact_name, :contact_firstname, :contact_street, :contact_city, :contact_zip, :contact_country, :contact_email, enrollments_attributes: [ :id, :runner_title, :runner_name, :runner_firstname, :runner_gender, :run_id, :event_id, :runner_date_of_birth])
     end
 
     def set_event
