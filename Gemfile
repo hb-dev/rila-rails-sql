@@ -34,6 +34,8 @@ gem 'seed_dump'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'devise'
+gem 'jbuilder_cache_multi'
+
 
 group :development do
   gem 'better_errors'
