@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :api, defaults: {format: :json} do
+    resources :enrollments
+    resources :events
+  end
+
 
   devise_for :users
   resources :certificates, only: ['index','show']
