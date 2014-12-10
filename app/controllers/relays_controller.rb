@@ -9,7 +9,7 @@ class RelaysController < ApplicationController
   # GET /relays
   # GET /relays.json
   def index
-    @relays = @run.relays.sort_by{|relay| relay[:finishtime]}
+    @relays = @run.relays.to_a.sort_by(&:finishtime)
   end
 
   # GET /relays/1
