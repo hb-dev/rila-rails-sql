@@ -14,6 +14,7 @@
         <%= link_to "Für anderen Lauf anmelden", select_run_event_path(@event), class: "change_run" %>
       <% end %>
       <%= f.text_field :name, label: 'Staffelname' %>
+      <%= f.number_field :startnumber %>
       <h3>Läufer</h3>
       <%= tabbable do |bar| %>
         <% bar.tab "Läufer 1" %>
@@ -21,7 +22,8 @@
         <% bar.tab "Läufer 3" %>
         <% bar.tab "Läufer 4" %>
         <%= f.fields_for :enrollments do |nf| %>
-          <% bar.tab_pane do %>         
+          <% bar.tab_pane do %>        
+            <%= nf.hidden_field :id %> 
             <%= nf.select :runner_title, ['Dr.', 'Prof.', 'Prof. Dr.'], prompt: 'Kein' %>
             <%= nf.text_field :runner_name %>
             <%= nf.text_field :runner_firstname %>
