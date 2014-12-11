@@ -58,8 +58,8 @@ class API::EventsController < ApplicationController
   end
     
   def set_access_control_headers
-    eaders['Access-Control-Allow-Origin'] = "*"
+    headers['Access-Control-Allow-Origin'] = "*"
     headers['Access-Control-Request-Method'] = %w{GET POST OPTIONS}.join(",")
   end
-  
+
 end
