@@ -35,7 +35,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'devise'
 gem 'jbuilder_cache_multi'
-gem 'rack-cors'#, :require => 'rack/cors'
+gem 'rack-cors', '0.3.0'
 
 group :development do
   gem 'better_errors'
