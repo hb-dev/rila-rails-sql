@@ -1,6 +1,6 @@
 class API::EventsController < API::BaseController
 
-  #respond_to :json
+  respond_to :json
 
   before_action :set_event, only: [:show, :edit, :update, :destroy, :select_run]
 

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  namespace :api do
+
+  namespace :api, defaults: {format: :json} do
+    match 'events', to: 'events#create', via: [:options]
     resources :enrollments
     resources :events
   end
