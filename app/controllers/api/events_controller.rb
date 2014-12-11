@@ -1,4 +1,4 @@
-class API::EventsController < ApplicationController
+class API::EventsController < API::BaseController
 
   respond_to :json
 
