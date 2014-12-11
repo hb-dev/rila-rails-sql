@@ -1,11 +1,8 @@
-class API::EventsController < ApplicationController
+class API::EventsController < API::BaseController
 
   respond_to :json
 
   before_action :set_event, only: [:show, :edit, :update, :destroy, :select_run]
-
-  after_action :access_control_headers
-
 
   def index
     @events = Event.all
@@ -57,9 +54,4 @@ class API::EventsController < ApplicationController
     params.require(:event).permit(:name, :event_date)
   end
     
-  def set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = "*"
-    headers['Access-Control-Request-Method'] = %w{GET POST OPTIONS}.join(",")
-  end
-
 end
