@@ -37,6 +37,7 @@ gem 'devise'
 gem 'jbuilder_cache_multi'
 gem 'email_validator'
 gem 'friendly_id'
+gem 'rails_admin'
 
 group :development do
   gem 'better_errors'

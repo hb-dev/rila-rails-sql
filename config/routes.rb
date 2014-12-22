@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   namespace :api, defaults: {format: :json} do
     match 'enrollments', to: 'enrollments#create', via: [:options]
     match 'relays', to: 'relays#create', via: [:options]
