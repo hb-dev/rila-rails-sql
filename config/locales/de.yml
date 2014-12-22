@@ -197,10 +197,10 @@ de:
     pm: nachmittags
   activerecord:
     models:
-      registration: 'Anmeldung'
+      enrollment: 'Anmeldung'
       relay: 'Staffel'
     attributes:
-      registration:
+      enrollment:
         run: 'Lauf'
         startnumber: 'Startnr.'
         transponder: 'Transpondernr.'
