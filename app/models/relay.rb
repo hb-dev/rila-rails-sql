@@ -15,7 +15,6 @@ class Relay < ActiveRecord::Base
 	before_validation :set_run_id
 	before_save :set_age_group
 	before_save :set_event_id
-	before_save :generate_public_id
 
 	def date_expired
 		errors.add(:base, "Der Anmeldezeitraum ist abgelaufen.") if Time.now.to_date >= run.event.event_date
