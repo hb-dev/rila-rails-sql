@@ -15,7 +15,6 @@ class Enrollment < ActiveRecord::Base
 	before_validation :set_run_id
 	before_save :set_age_group
 	before_save :set_event_id
-	before_save :set_public_id
 
 	scope "Männlich", -> {where(runner_gender: "Männlich")}
 	scope "Weiblich", -> {where(runner_gender: "Weiblich")}
