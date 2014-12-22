@@ -2,13 +2,20 @@ Rails.application.routes.draw do
 
 
   namespace :api, defaults: {format: :json} do
-    match 'events', to: 'events#create', via: [:options]
+    match 'enrollments', to: 'enrollments#create', via: [:options]
+    match 'relays', to: 'relays#create', via: [:options]
     resources :enrollments
-    resources :events
+    resources :relays
+    resources :runs
+    resources :events do
+      collection do
+        get 'latest'
+      end
+    end
   end
 
-
   devise_for :users
+
   resources :certificates, only: ['index','show']
 
   resources :events do
@@ -18,6 +25,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'select_run'
+      get 'copy_runs'
     end
   end
 

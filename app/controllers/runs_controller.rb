@@ -38,16 +38,16 @@ class RunsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
 
   def set_event
-    @event = Event.find(params[:event_id])
+    @event = Event.friendly.find(params[:event_id])
   end
 
   def set_run
-    @run = @event.runs.find(params[:id])
+    @run = @event.runs.friendly.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def run_params
-    params.require(:run).permit(:name, :min_age, :max_age, :relay, :minis, :price_adult_pre, :price_adult, :price_child_pre, :price_child)
+    params.require(:run).permit(:name, :min_age, :max_age, :relay, :minis, :kids, :price_adult_pre, :price_adult, :price_child_pre, :price_child)
   end
 
 end

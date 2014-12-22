@@ -33,7 +33,7 @@
   <%= f.text_field :runner_organisation, help: 'Firma, Verein, KiTa, Schule, etc.' unless @run.relay? %>
   <%= f.text_field :runner_organisation, label: 'Staffelname' if @run.relay? %>
   <%= f.text_field :runner_email %>
-  <%= f.text_field :runner_contact if @run.max_age <= 14 %>
+  <%= f.text_area :runner_contact if @run.kids %>
   </div>
 
   <%= f.form_group do %>

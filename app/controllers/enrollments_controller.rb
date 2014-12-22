@@ -70,7 +70,7 @@ class EnrollmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_event
-      @event = Event.find(params[:event_id])
+      @event = Event.friendly.find(params[:event_id])
     end
     
     def set_enrollment
@@ -82,7 +82,7 @@ class EnrollmentsController < ApplicationController
     end
 
     def set_run
-      @run = @event.runs.find(params[:run_id])
+      @run = @event.runs.friendly.find(params[:run_id])
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.

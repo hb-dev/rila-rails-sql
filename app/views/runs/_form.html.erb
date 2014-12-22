@@ -7,15 +7,18 @@
     <%= f.number_field :max_age %>
     <h3>Preis</h3>
     <%= f.number_field :price_adult_pre, prepend: "€", step: 'any' %>
-    <%= f.number_field :price_adult, prepend: "€" %>
-    <%= f.number_field :price_child_pre, prepend: "€" %>
-    <%= f.number_field :price_child, prepend: "€" %>
+    <%= f.number_field :price_adult, prepend: "€", step: 'any' %>
+    <%= f.number_field :price_child_pre, prepend: "€", step: 'any' %>
+    <%= f.number_field :price_child, prepend: "€", step: 'any' %>
     <hr />
     <%= f.form_group do %>
         <%= f.check_box :relay %>
     <% end %>
     <%= f.form_group do %>
-    	<%= f.check_box :minis %>
+        <%= f.check_box :minis %>
+    <% end %>
+    <%= f.form_group do %>
+    	<%= f.check_box :kids %>
     <% end %>
     <%= f.form_group do %>
         <%= f.submit %>

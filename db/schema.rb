@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209213209) do
+ActiveRecord::Schema.define(version: 20141221214131) do
 
   create_table "enrollments", force: true do |t|
     t.integer  "run_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141209213209) do
     t.string   "runner_country"
     t.date     "runner_date_of_birth"
     t.string   "runner_gender"
-    t.string   "runner_contact"
+    t.text     "runner_contact"
     t.string   "runner_email"
     t.string   "runner_organisation"
     t.datetime "created_at"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 20141209213209) do
     t.integer  "event_id"
     t.integer  "relay_id"
     t.string   "age_group"
+    t.string   "run_slug"
+    t.string   "public_id"
+    t.boolean  "newsletter"
   end
 
   create_table "events", force: true do |t|
@@ -42,7 +45,23 @@ ActiveRecord::Schema.define(version: 20141209213209) do
     t.date     "event_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "relays", force: true do |t|
     t.integer  "run_id"
@@ -60,6 +79,9 @@ ActiveRecord::Schema.define(version: 20141209213209) do
     t.integer  "event_id"
     t.string   "age_group"
     t.integer  "startnumber"
+    t.string   "run_slug"
+    t.string   "public_id"
+    t.boolean  "newsletter"
   end
 
   create_table "runs", force: true do |t|
@@ -75,21 +97,26 @@ ActiveRecord::Schema.define(version: 20141209213209) do
     t.decimal  "price_adult",     precision: 4, scale: 2
     t.decimal  "price_child",     precision: 4, scale: 2
     t.boolean  "minis"
+    t.boolean  "kids"
+    t.string   "slug"
   end
 
+  add_index "runs", ["slug"], name: "index_runs_on_slug", unique: true, using: :btree
+
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

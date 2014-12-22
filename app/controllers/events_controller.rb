@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
 
-  before_action :authenticate_user!, unless: :format_json?
+  before_action :authenticate_user!
 
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :select_run]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :select_run, :copy_runs]
 
   # GET /events
   # GET /events.json
@@ -69,10 +69,21 @@ class EventsController < ApplicationController
     @runs = @event.runs
   end  
 
+
+  def copy_runs
+    previous_event = Event.where("event_date < ?", @event.event_date).order("event_date desc").first
+    previous_event.runs.each do |prev_run|
+      new_run = prev_run.dup
+      new_run.event_id = @event.id
+      new_run.save
+    end
+    redirect_to event_runs_path(@event)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

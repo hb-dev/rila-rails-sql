@@ -35,6 +35,8 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'devise'
 gem 'jbuilder_cache_multi'
+gem 'email_validator'
+gem 'friendly_id'
 
 group :development do
   gem 'better_errors'
@@ -46,7 +48,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'cloudcontrol-rails', '0.0.6'
+  #gem 'cloudcontrol-rails', '0.0.6'
 	gem 'rails_12factor'
 	gem 'therubyracer'
 end
