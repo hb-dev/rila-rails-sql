@@ -10,7 +10,7 @@ class Relay < ActiveRecord::Base
 	# validates :agb, acceptance: { accept: true }
 	# validate :date_expired
 
-	include Publicidable
+	#include Publicidable
 
 	before_validation :set_run_id
 	before_save :set_age_group

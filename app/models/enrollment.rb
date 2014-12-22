@@ -10,7 +10,7 @@ class Enrollment < ActiveRecord::Base
 	# validates :runner_email, email: true, presence:true, unless: "run.relay?"
 	# validates :agb, acceptance: { accept: true }
 
-	include Publicidable
+	#include Publicidable
 	
 	before_validation :set_run_id
 	before_save :set_age_group

@@ -2,7 +2,7 @@ module Publicidable
   extend ActiveSupport::Concern
 
   included do
-    #before_create :set_public_id
+    before_create :set_public_id
   end
 
   protected
