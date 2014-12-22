@@ -51,4 +51,5 @@ group :production do
   #gem 'cloudcontrol-rails', '0.0.6'
 	gem 'rails_12factor'
 	gem 'therubyracer'
+	gem 'unicorn'
 end

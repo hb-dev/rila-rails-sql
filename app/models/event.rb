@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
 	has_many :enrollments
 	has_many :relays
 
-	#validates :name, :event_date, presence: true
+	validates :name, :event_date, presence: true
 
 	def random_id
 		SecureRandom.hex
