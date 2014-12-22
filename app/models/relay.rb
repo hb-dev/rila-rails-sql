@@ -4,11 +4,11 @@ class Relay < ActiveRecord::Base
 
 	accepts_nested_attributes_for :enrollments
 
-	validates :name, :contact_name, :contact_firstname, :contact_street, :contact_city, :contact_zip, :contact_country, presence: true
-	validates :contact_email, email: true, presence:true
-	validates :enrollments, length: { is: 4 }
-	validates :agb, acceptance: { accept: true }
-	validate :date_expired
+	# validates :name, :contact_name, :contact_firstname, :contact_street, :contact_city, :contact_zip, :contact_country, presence: true
+	# validates :contact_email, email: true, presence:true
+	# validates :enrollments, length: { is: 4 }
+	# validates :agb, acceptance: { accept: true }
+	# validate :date_expired
 
 	include Publicidable
 

@@ -9,7 +9,7 @@ class Run < ActiveRecord::Base
 	has_many :enrollments
 	has_many :relays
 
-	validates :name, :min_age, :max_age, :price_adult_pre, :price_adult, :price_child_pre, :price_child, presence: true
+	#validates :name, :min_age, :max_age, :price_adult_pre, :price_adult, :price_child_pre, :price_child, presence: true
 
 	def random_id
 		SecureRandom.hex

@@ -2,13 +2,13 @@ class Enrollment < ActiveRecord::Base
 	belongs_to :run
 	belongs_to :event
 	belongs_to :relay
-	validates :runner_name, :runner_firstname, :runner_gender, :runner_date_of_birth, presence:true
-	validates :runner_street, :runner_city, :runner_zip, :runner_country, presence:true, unless: "run.relay?"
-	validates :runner_contact, presence: true, if: "run.minis? || run.kids?"
-	validate :valid_age
-	validate :date_expired
-	validates :runner_email, email: true, presence:true, unless: "run.relay?"
-	validates :agb, acceptance: { accept: true }
+	# validates :runner_name, :runner_firstname, :runner_gender, :runner_date_of_birth, presence:true
+	# validates :runner_street, :runner_city, :runner_zip, :runner_country, presence:true, unless: "run.relay?"
+	# validates :runner_contact, presence: true, if: "run.minis? || run.kids?"
+	# validate :valid_age
+	# validate :date_expired
+	# validates :runner_email, email: true, presence:true, unless: "run.relay?"
+	# validates :agb, acceptance: { accept: true }
 
 	include Publicidable
 	
