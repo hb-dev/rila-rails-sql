@@ -53,4 +53,5 @@ group :production do
 	gem 'rails_12factor'
 	gem 'therubyracer'
 	gem 'unicorn'
+	gem 'newrelic_rpm'
 end
