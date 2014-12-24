@@ -12,7 +12,6 @@ class API::EventsController < API::BaseController
 
   def latest
     @event = Event.order("event_date desc").first
-    render :show
   end  
     
 end
