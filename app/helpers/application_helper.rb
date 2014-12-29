@@ -36,11 +36,11 @@ module ApplicationHelper
   end  
 
   def certificate_link(enrollment)
-    certificates_url + "/" + certificates_html(enrollment) + "?year=" + enrollment.run.event.event_date.year.to_s
+    "http://anmeldungen.ringelnatzlauf.de/certificates/" + certificates_html(enrollment) + "?year=" + enrollment.run.event.event_date.year.to_s
   end
 
   def certificate_link_relay(relay)
-    certificates_url + "/" + certificates_html_relay(relay) + "?year=" + relay.run.event.event_date.year.to_s
+    "http://anmeldungen.ringelnatzlauf.de/certificates/" + certificates_html_relay(relay) + "?year=" + relay.run.event.event_date.year.to_s
   end
 
 end
