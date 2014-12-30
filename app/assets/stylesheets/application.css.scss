@@ -15,4 +15,7 @@ body { padding-top: 40px; }
 @import "bootswatch/united/bootswatch";
 
 // Whatever application styles you have go last
+
+@import "nya-bootstrap-select.css";
+
 @import "base";

@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @enrollments = @event.enrollments.order(:finishtime)
+    @event = Event.friendly.find(params[:id])
   end
 
   # GET /events/new

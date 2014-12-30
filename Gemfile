@@ -38,6 +38,8 @@ gem 'jbuilder_cache_multi'
 gem 'email_validator'
 gem 'friendly_id'
 gem 'rails_admin'
+gem 'bower-rails'
+gem 'angular-rails-templates'
 
 group :development do
   gem 'better_errors'
