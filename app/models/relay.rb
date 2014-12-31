@@ -1,5 +1,6 @@
 class Relay < ActiveRecord::Base
 	belongs_to :run
+	belongs_to :event
 	has_many :enrollments
 
 	accepts_nested_attributes_for :enrollments
