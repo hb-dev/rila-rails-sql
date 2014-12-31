@@ -8,10 +8,5 @@
       "angular-bootstrap": "latest",
       "nya-bootstrap-select": "latest"
     }
-  },
-  "vendor": {
-    "name": "bower-rails generated vendor assets",
-    "dependencies": {
-    }
   }
 }
