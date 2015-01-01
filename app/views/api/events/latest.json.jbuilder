@@ -1,4 +1,4 @@
-json.cache! do
+json.cache! [@event]  do
 	json.name @event.name
 	json.date l @event.event_date
 	json.runs @event.runs do |run|
