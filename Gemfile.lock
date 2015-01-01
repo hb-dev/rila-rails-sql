@@ -99,9 +99,6 @@ GEM
     multi_json (1.10.1)
     mysql2 (0.3.16)
     nested_form (0.3.2)
-    ngannotate-rails (0.14.1)
-      execjs
-      rails (>= 3.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -235,7 +232,6 @@ DEPENDENCIES
   jquery-rails
   mysql2
   nested_form
-  ngannotate-rails
   pg
   rails (= 4.1.4)
   rails-bootstrap-helpers
