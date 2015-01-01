@@ -40,7 +40,7 @@ gem 'friendly_id'
 gem 'rails_admin'
 gem 'bower-rails'
 gem 'angular-rails-templates'
-gem 'ngannotate-rails'
+#gem 'ngannotate-rails'
 
 group :development do
   gem 'better_errors'
