@@ -17,7 +17,7 @@ rilaServices = angular.module 'rilaServices', ['ngResource']
 #  ]);
 
 rilaServices.factory 'Event', [ "$resource", ($resource) ->
-  $resource('/events/:id', { id: "@id" }, {'show': { method: 'GET', isArray: false }})
+  $resource('/events/:id.json', { id: "@id" }, {'show': { method: 'GET', isArray: false }})
 ]
 # rilaServices.factory('Run', ['$resource',
 #   function($resource){

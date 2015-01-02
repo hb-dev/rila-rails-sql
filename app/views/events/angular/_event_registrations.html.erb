@@ -1,0 +1,27 @@
+<h3 class="page-header">Anmeldungen</h3>
+<h3><ul class="nya-bs-select" ng-model="selectedRun">
+	<li nya-bs-option="run in runs"><a>{{run.name}}</a></li>
+</ul>
+</h3>	
+<div ng-repeat="run in runs">
+	<div ng-show="selectedRun.name == run.name">
+	  <div class="form-inline row">
+		  <div class="form-group col-sm-6">
+		    <div class="input-group">
+		      <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+		      <input type="text" class="form-control" placeholder="Suchen" ng-model="searchText">
+		    </div>
+		  </div>	  	
+	  </div>
+	  <br />
+		<div class="table-responsive" ng-hide="run.relay || run.minis" ng-init="searchText=''">
+			<%= render "events/angular/event_registrations_single" %>
+		</div>
+		<div class="table-responsive" ng-show="run.relay" ng-init="searchText=''">
+			<%= render "events/angular/event_registrations_relay" %>
+		</div>
+		<div class="table-responsive" ng-show="run.minis" ng-init="searchText=''">
+			<%= render "events/angular/event_registrations_minis" %>
+		</div>
+  </div>
+</div>

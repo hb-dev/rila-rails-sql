@@ -9,14 +9,14 @@ dependencies = [
 
 config = ($routeProvider, $locationProvider ) ->
   $routeProvider
-  .when '/',
-    controller: 'myCtrl'
-    templateUrl: '../views/home.html'
-  .when '/events/:eventId',
-    controller: 'EventRegistrationsCtrl'
-    templateUrl: 'events/event-registrations.html'
-  .otherwise
-    redirectTo: '/'
+  # .when '/',
+  #   controller: 'myCtrl'
+  #   templateUrl: '../views/home.html'
+  # .when '/events/:eventId',
+  #   controller: 'EventRegistrationsCtrl'
+  #   templateUrl: 'events/event-registrations.html'
+  # .otherwise
+  #   redirectTo: '/'
 
   $locationProvider.html5Mode
   	enabled: true

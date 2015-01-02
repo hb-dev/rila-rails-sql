@@ -1,8 +1,8 @@
 rilaControllers = angular.module "rilaControllers", []
 
-rilaControllers.controller 'EventRegistrationsCtrl', ["$scope", "$routeParams", "Event", ($scope, $routeParams, Event) ->
-  $scope.theEvent = Event.show {id: $routeParams.eventId}, (theEvent) -> 
+rilaControllers.controller 'EventRegistrationsCtrl', ["$scope", "$attrs", "Event", ($scope, $attrs, Event) ->
+  $scope.theEvent = Event.show {id: $attrs.eventid}, (theEvent) -> 
     $scope.runs = theEvent.runs
     $scope.selectedRun = $scope.runs[0]
-  $scope.showTotal = true;
+  $scope.showTotal = true
 ]

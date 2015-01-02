@@ -6,4 +6,6 @@
   <li><%= link_to 'Neuen Läufer eintragen', select_run_event_path(@event) %></li>
 </ul>
 
-<div class="angular-viewframe" ng-view></div>
+<div class="angular-viewframe" ng-controller="EventRegistrationsCtrl" data-eventid="<%=@event.slug%>">
+	<%= render "events/angular/event_registrations" %>
+</div>
