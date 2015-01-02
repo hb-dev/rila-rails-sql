@@ -1,6 +1,5 @@
 dependencies = [
   'ngRoute'
-  'templates'
   'rilaControllers'
   'rilaServices'
   'ui.bootstrap'
