@@ -1,35 +1,48 @@
-<%= bootstrap_form_for([@event, @run, @enrollment], layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4") do |f| %>
-  <% if @enrollment.errors.any? %>
-    <div class="alert alert-danger">
-      <p><strong>Bitte überprüfen Sie Ihre Eingaben:</strong></p>
-      <br />
-      <ul>
-      <% @enrollment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.select :run_id, @runs %>
-  <%= f.text_field :startnumber %>
-  <%= f.text_field :transponder %>
-  <%= f.time_select :finishtime, {include_seconds: true, default: Time.now.beginning_of_day} %>
-  <%= f.select :runner_title, ['Dr.', 'Prof.', 'Prof. Dr.'], prompt: 'Kein' %>
-  <%= f.text_field :runner_name %>
-  <%= f.text_field :runner_firstname %>
-  <%= f.text_field :runner_street %>
-  <%= f.text_field :runner_city %>
-  <%= f.text_field :runner_zip %>
-  <%= f.select :runner_country, options_for_select(COUNTRIES, 'Deutschland')%>
-  <%= f.date_select :runner_date_of_birth, end_year: 1900, start_year: Time.now.year - 3, prompt: { day: 'Tag..', month: 'Monat..', year: 'Jahr..' } %>
-  <%= f.select :runner_gender, ['Männlich', 'Weiblich'], prompt: 'Bitte auswählen' %>
-  <%= f.text_field :runner_contact %>
-  <%= f.text_field :runner_email %>
-  <%= f.text_field :runner_organisation, help: 'Firma, Verein, KiTa, Schule, etc.' %>
-
-  <%= f.form_group do %>
-      <%= f.submit class: 'btn btn-success'%>
-  <% end %>
+<%= bootstrap_form_for [@event, @run, @enrollment], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-9" do |f| %>
+  <div class="col-lg-6">
+    <fieldset class="panel panel-default">
+      <div class="panel-heading">Angaben zum Läufer</div>
+      <div class="panel-body">
+        <%= f.select :runner_title, ['Dr.', 'Prof.', 'Prof. Dr.'], prompt: 'Kein' %>
+        <%= f.text_field :runner_name %>
+        <%= f.text_field :runner_firstname %>
+        <%= f.text_field :runner_street %>
+        <%= f.text_field :runner_city %>
+        <%= f.text_field :runner_zip %>
+        <%= f.select :runner_country, options_for_select(COUNTRIES, 'Deutschland')%>
+        <%= f.date_select :runner_date_of_birth, end_year: 1900, start_year: Time.now.year - 3, prompt: { day: 'Tag..', month: 'Monat..', year: 'Jahr..' } %>    
+        <%= f.select :runner_gender, ['Männlich', 'Weiblich'], prompt: 'Bitte auswählen' %>
+      </div>
+    </fieldset>
+  </div>
+  <div class="col-lg-6">
+    <fieldset class="panel panel-default">
+      <div class="panel-heading">Angaben zum Lauf</div>
+      <div class="panel-body">
+        <%= f.select :run_id, @runs %>
+        <%= f.text_field :startnumber %>
+        <%= f.text_field :transponder %>
+        <%= f.time_select :finishtime, {include_seconds: true, default: Time.now.beginning_of_day} %>
+      </div>
+    </fieldset>
+  </div>
+  <div class="col-lg-6">
+    <fieldset class="panel panel-default">
+      <div class="panel-heading">Angaben zum Läufer</div>
+      <div class="panel-body">
+        <%= f.text_field :runner_organisation, help: 'Firma, Verein, KiTa, Schule, etc.' unless @run.relay? %>
+        <%= f.text_field :runner_organisation, label: 'Staffelname' if @run.relay? %>
+        <%= f.text_field :runner_email %>
+        <%= f.text_field :runner_contact, help: 'Name eines Erziehungsberechtigten des Kindes' if @run.kids %>
+      </div>
+    </fieldset>
+    <%= f.form_group do %>
+      <%= f.submit class: 'btn btn-success' %>
+      <%= link_to "Abbrechen", event_path(@event), class: "btn btn-default" %>
+    <% end %>
+  </div>
 
 <% end %>
+
+
+

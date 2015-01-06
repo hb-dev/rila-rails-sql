@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101093329) do
+ActiveRecord::Schema.define(version: 20150103231224) do
 
   create_table "enrollments", force: true do |t|
     t.integer  "run_id"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20150101093329) do
     t.string   "run_slug"
     t.string   "public_id"
     t.boolean  "newsletter"
+    t.boolean  "payed"
+    t.boolean  "picked_up"
   end
 
   create_table "events", force: true do |t|
@@ -82,6 +84,8 @@ ActiveRecord::Schema.define(version: 20150101093329) do
     t.string   "run_slug"
     t.string   "public_id"
     t.boolean  "newsletter"
+    t.boolean  "picked_up"
+    t.boolean  "payed"
   end
 
   create_table "runs", force: true do |t|

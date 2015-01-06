@@ -1,11 +1,13 @@
-<%= page_header("Läufe") %>
+<%= render "shared/header" %>
 
-<ul class="list-group">
+<div class="list-group col-sm-4">
   <% @runs.each do |run| %>
-      <li class="list-group-item">
-        <%= link_to run.name, edit_event_run_path(@event, run) %> | <%= run.enrollments.count %>
-      </li>
+  	<%= link_to run.name, edit_event_run_path(@event, run), class: "list-group-item" %>
   <% end %>
-</ul>
-
+<br/>	
+<% if @runs.empty? %>
+	<%= link_to 'Läufe aus Vorjahr kopieren', copy_runs_event_path(@event), class: "btn btn-success", data: { confirm: 'Läufe aus dem Vorjahr wirklich kopieren und einfügen?' }if @runs.empty? %>
+	<br/><br/>
+<% end %>
 <%= link_to 'Lauf hinzufügen', new_event_run_path(@event), class: "btn btn-primary" %>
+</div>

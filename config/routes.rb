@@ -14,8 +14,18 @@ Rails.application.routes.draw do
       end
     end
   end
+  
+  concern :pickupable do
+    member do
+      put 'update_payed'
+      put 'update_picked_up'
+    end
+  end
 
   devise_for :users
+
+  resources :enrollments, concerns: :pickupable
+  resources :relays, concerns: :pickupable
 
   resources :certificates, only: ['index','show']
 
@@ -27,6 +37,7 @@ Rails.application.routes.draw do
     member do
       get 'select_run'
       get 'copy_runs'
+      get 'results'
     end
   end
 

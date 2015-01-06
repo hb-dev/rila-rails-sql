@@ -1,27 +1,39 @@
-<%= bootstrap_form_for([@event, @run], layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-3") do |f| %>
-    <%= f.alert_message "Please fix the errors below." %>
+<%= bootstrap_form_for([@event, @run], layout: :horizontal, label_col: "col-sm-5", control_col: "col-sm-7") do |f| %>
 
-    <%= f.text_field :name %>
-    <h3>Alter</h3>
-    <%= f.number_field :min_age %>
-    <%= f.number_field :max_age %>
-    <h3>Preis</h3>
-    <%= f.number_field :price_adult_pre, prepend: "€", step: 'any' %>
-    <%= f.number_field :price_adult, prepend: "€", step: 'any' %>
-    <%= f.number_field :price_child_pre, prepend: "€", step: 'any' %>
-    <%= f.number_field :price_child, prepend: "€", step: 'any' %>
-    <hr />
-    <%= f.form_group do %>
-        <%= f.check_box :relay %>
-    <% end %>
-    <%= f.form_group do %>
-        <%= f.check_box :minis %>
-    <% end %>
-    <%= f.form_group do %>
-    	<%= f.check_box :kids %>
-    <% end %>
-    <%= f.form_group do %>
-        <%= f.submit %>
-    <% end %>
-
+    <div class="col-lg-6">
+        <fieldset class="panel panel-default">
+            <div class="panel-heading">Angaben zum Lauf</div>
+            <div class="panel-body">
+                <%= f.text_field :name %>
+                <%= f.form_group do %>
+                    <%= f.check_box :relay %>
+                <% end %>
+                <%= f.form_group do %>
+                    <%= f.check_box :minis %>
+                <% end %>
+                <%= f.form_group do %>
+                    <%= f.check_box :kids %>
+                <% end %>
+                <%= f.number_field :min_age %>
+                <%= f.number_field :max_age %>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-lg-6">
+        <fieldset class="panel panel-default">
+            <div class="panel-heading">Preis</div>
+            <div class="panel-body">
+                <%= f.number_field :price_adult_pre, prepend: "€", step: 'any' %>
+                <%= f.number_field :price_adult, prepend: "€", step: 'any' %>
+                <%= f.number_field :price_child_pre, prepend: "€", step: 'any' %>
+                <%= f.number_field :price_child, prepend: "€", step: 'any' %>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-sm-6">
+        <%= f.form_group do %>
+            <%= f.submit class: "btn btn-success" %>
+            <%= link_to "Abbrechen", event_runs_path(@event), class: "btn btn-default" %>
+        <% end %>
+    </div>
 <% end %>

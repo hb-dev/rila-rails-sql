@@ -1,11 +1,10 @@
-<%= page_header("Läufe") %>
+<%= render "shared/header" %>
 
-<ul class="list-group">
+<p>Für welchen Lauf soll eine Anmeldungen erstellt werden?</p><br />
+<div class="list-group col-sm-4">
   <% @runs.each do |run| %>
-      <li class="list-group-item">
-        <%= link_to run.name, run.relay? ? new_event_run_relay_path(@event, run) : new_event_run_enrollment_path(@event, run) %>
-      </li>
+  	<%= link_to run.name, run.relay? ? new_event_run_relay_path(@event, run) : new_event_run_enrollment_path(@event, run), class: "list-group-item" %>
   <% end %>
-</ul>
-
-<%= link_to 'Lauf hinzufügen', new_event_run_path(@event), class: "btn btn-primary" %>
+<br/>	
+<%= link_to "Abbrechen", event_path(@event), class: "btn btn-danger" %>
+</div>

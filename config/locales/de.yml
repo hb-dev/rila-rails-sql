@@ -199,12 +199,14 @@ de:
     models:
       enrollment: 'Anmeldung'
       relay: 'Staffel'
+      run: 'Lauf'
+      event: 'Veranstaltung'
     attributes:
       enrollment:
-        run: 'Lauf'
+        run_id: 'Lauf'
         startnumber: 'Startnr.'
-        transponder: 'Transpondernr.'
         finishtime: 'Zielzeit'
+        transponder: 'Transpondernr.'
         runner_title: 'Titel'
         runner_name: 'Nachname'
         runner_firstname: 'Vorname'
@@ -214,12 +216,14 @@ de:
         runner_country: 'Land'
         runner_date_of_birth: 'Geburtsdatum'
         runner_gender: 'Geschlecht'
-        runner_contact: 'Kontaktdaten'
+        runner_contact: 'Erziehungsber.'
         runner_email: 'E-Mail'
         runner_organisation: 'Organisation'
       relay:
-        relay: 'Staffel'
         name: 'Staffelname'
+        transponder: 'Transpondernr.'
+        startnumber: 'Startnr.'
+        transponder: 'Transpondernr.'
         contact_title: 'Titel'
         contact_name: 'Nachname'
         contact_firstname: 'Vorname'
@@ -228,3 +232,17 @@ de:
         contact_zip: 'Plz'
         contact_country: 'Land'
         contact_email: 'E-Mail'
+      run:
+        name: "Laufname"
+        min_age: "Mindestalter"
+        max_age: "Höchstalter"
+        price_adult_pre: "Erwachsener (ermäßigt)"
+        price_adult: "Erwachsener (normal)"
+        price_child_pre: "Kind (ermäßigt)"
+        price_child: "Kind (normal)"
+        relay: "Staffellauf"
+        minis: "Mini-Lauf"
+        kids: "Kinderlauf"
+      event:
+        name: "Name"
+        event_date: "Datum"

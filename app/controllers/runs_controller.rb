@@ -6,33 +6,46 @@ class RunsController < ApplicationController
   before_action :set_run, only: [:show, :edit, :update, :destroy]
 
   def index
+    @page_topic = "Läufe verwalten"
     @runs = @event.runs
   end
 
   def new
+    @page_topic = "Lauf hinzufügen"
     @run = @event.runs.new
   end
 
   def create
+    @page_topic = "Lauf hinzufügen"
     @run = @event.runs.new(run_params)
 
     if @run.save
-      redirect_to event_runs_path(@event), notice: 'Run was successfully added.'
+      redirect_to event_runs_path(@event), notice: 'Lauf erfolgreich hinzugefügt.'
     else
       render :new
     end
   end
 
   def edit
+    @page_topic = "Lauf bearbeiten"
   end
 
   def update
+    @page_topic = "Lauf bearbeiten"
     if @run.update(run_params)
-      redirect_to event_runs_path(@event), notice: 'Run was successfully updated.'
+      redirect_to event_runs_path(@event), notice: 'Lauf erfolgreich aktualisiert.'
     else
       render :edit
     end
   end
+
+  def destroy
+    @run.destroy
+    respond_to do |format|
+      format.html { redirect_to event_runs_path(@event), notice: 'Lauf erfolgreich gelöscht.' }
+      format.json { head :no_content }
+    end
+  end  
 
   private
   # Use callbacks to share common setup or constraints between actions.

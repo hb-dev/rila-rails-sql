@@ -1,7 +1,7 @@
 class Relay < ActiveRecord::Base
 	belongs_to :run
 	belongs_to :event
-	has_many :enrollments
+	has_many :enrollments, dependent: :destroy
 
 	accepts_nested_attributes_for :enrollments
 
@@ -16,6 +16,9 @@ class Relay < ActiveRecord::Base
 	before_validation :set_run_id
 	before_save :set_age_group
 	before_save :set_event_id
+	after_save :update_associated_payed, if: "payed_changed?"
+	after_save :update_associated_picked_up, if: "picked_up_changed?"
+
 
 	def date_expired
 		errors.add(:base, "Der Anmeldezeitraum ist abgelaufen.") if Time.now.to_date >= run.event.event_date
@@ -91,6 +94,14 @@ class Relay < ActiveRecord::Base
 
 	def set_event_id
 		self.event_id = self.run.event_id
+	end
+
+	def update_associated_payed
+		enrollments.update_all payed: payed
+	end
+
+	def update_associated_picked_up
+		enrollments.update_all picked_up: picked_up
 	end
 
 end

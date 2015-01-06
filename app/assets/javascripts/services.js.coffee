@@ -1,29 +1,16 @@
 rilaServices = angular.module 'rilaServices', ['ngResource']
 
-# rilaServices.factory('Enrollment', ['$resource',
-#   function($resource){
-#     return $resource('/api/enrollments/:id', { id: "@id" }, {
-#       'create':  { method: 'POST' }
-#     });
-#   }
-#  ]);
-
-# rilaServices.factory('Relay', ['$resource',
-#   function($resource){
-#     return $resource('/api/relays/:id', { id: "@id" }, {
-#       'create':  { method: 'POST' }
-#     });
-#   }
-#  ]);
-
 rilaServices.factory 'Event', [ "$resource", ($resource) ->
-  $resource('/events/:id.json', { id: "@id" }, {'show': { method: 'GET', isArray: false }})
+  $resource	'/events/:id.json',	id: "@id" , 
+  	'show': { method: 'GET', isArray: false }
+  	'results': { method: 'GET', isArray: false, url: '/events/:id/results.json' }
 ]
-# rilaServices.factory('Run', ['$resource',
-#   function($resource){
-#     return $resource('/api/runs/:id', { id: "@id" }, {
-#       'index':   { method: 'GET', isArray: true },
-#       'show':   { method: 'GET', isArray: false }
-#     });
-#   }
-# ]);
+
+rilaServices.factory 'Enrollment', [ "$resource", ($resource) ->
+  $resource	'/enrollments/:id.json',	id: "@id" , 
+  	'updateAttribute': { method: 'PUT', isArray: false, url: '/enrollments/:id/update_:attribute', params: {id: "@id", attribute: "@attribute"} }
+]
+rilaServices.factory 'Relay', [ "$resource", ($resource) ->
+  $resource	'/relays/:id.json',	id: "@id" , 
+  	'updateAttribute': { method: 'PUT', isArray: false, url: '/relays/:id/update_:attribute', params: {id: "@id", attribute: "@attribute"} }
+]

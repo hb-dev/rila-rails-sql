@@ -3,5 +3,6 @@ asset 'angular-route', 'latest'
 asset 'angular-resource', 'latest'
 asset 'angular-bootstrap', 'latest'
 asset 'nya-bootstrap-select', 'latest'
+asset 'angular-ui-switch', 'latest'
 
 resolution "angular", "1.3.8"

@@ -16,3 +16,46 @@ h3 {
 	padding-bottom: 10px;
 	margin-bottom: 20px;
 }
+
+.simple-navigation-active-leaf > a{
+	font-weight: bold;
+}
+
+.table-responsive {
+	margin-top: 22px;
+}
+
+.placement {
+	text-align: right;
+}
+
+.placement label {
+	margin-right: 15px;
+}
+
+.dropdown-menu .glyphicon {
+	margin-right: 5px;
+}
+
+.switch {
+	width: 25px;
+	height: 12px;	
+}
+
+.switch small {
+	width: 16px;
+	height: 16px;
+	top: -2px;
+}
+
+.switch.checked small {
+	left: 10px;
+}
+
+.panel p {
+	margin-bottom: 20px;
+}
+
+.form-group p {
+	margin-bottom: 0px;
+}

@@ -1,0 +1,22 @@
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Organisation</th>
+			<th>Alterskl.</th>
+			<th>Bezahlt</th>
+			<th>Abgeholt</th>			
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="enrollment in run.enrollments | filter:searchText">
+			<td>{{$index+1}}</td>
+			<td><a href="{{enrollment.edit_url}}">{{enrollment.name}}</a></td>
+			<td>{{enrollment.organisation}}</td>
+			<td>{{enrollment.age_group}}</td>
+			<td><input type="checkbox" ng-model="enrollment.payed" ng-change="update('Enrollment', 'payed', {{enrollment.id}})"></td>
+			<td><input type="checkbox" ng-model="enrollment.picked_up" ng-change="update('Enrollment', 'picked_up', {{enrollment.id}})"></td>			
+		</tr>
+	</tbody>
+</table>    	

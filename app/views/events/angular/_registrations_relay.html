@@ -1,0 +1,22 @@
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Staffelname</th>
+			<th>Läufer</th>
+			<th>Alterskl.</th>
+			<th>Bezahlt</th>
+			<th>Abgeholt</th>			
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="relay in run.relays | filter:searchText">
+			<td>{{$index+1}}</td>
+			<td><a href="{{relay.edit_url}}">{{relay.name}}</a></td>
+			<td>{{relay.runners}}</td>
+			<td>{{relay.age_group}}</td>
+			<td><input type="checkbox" ng-model="relay.payed" ng-change="update('Relay', 'payed', {{relay.id}})"></td>
+			<td><input type="checkbox" ng-model="relay.picked_up" ng-change="update('Relay', 'picked_up', {{relay.id}})"></td>			
+		</tr>
+	</tbody>
+</table>    	

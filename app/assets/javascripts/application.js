@@ -18,4 +18,5 @@
 //= require angular-resource
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require nya-bootstrap-select.js
+//= require angular-ui-switch/angular-ui-switch.min.js
 //= require_tree .

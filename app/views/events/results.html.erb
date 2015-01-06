@@ -1,0 +1,5 @@
+<%= render "shared/header" %>
+
+<div class="angular-viewframe" ng-controller="EventResultsCtrl" data-eventid="<%=@event.slug%>">
+	<%= render "events/angular/results" %>
+</div>

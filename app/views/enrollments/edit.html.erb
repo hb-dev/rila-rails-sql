@@ -1,3 +1,7 @@
-<h1>Editing enrollment</h1>
+<% content_for :topic_nav do %>
+	<%= link_to 'Löschen', event_run_enrollment_path(@event, @run, @enrollment), class: "btn btn-danger pull-right", method: :delete, data: { confirm: 'Möchten Sie diese Anmeldung wirklich löschen?' } %>
+<% end %>
+
+<%= render "shared/header" %>
 
 <%= render 'edit_form' %>

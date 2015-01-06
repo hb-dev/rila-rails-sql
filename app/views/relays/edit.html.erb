@@ -1,4 +1,9 @@
-<%= page_header("Staffel bearbeiten") %>
+<% content_for :topic_nav do %>
+	<%= link_to 'Löschen', event_run_relay_path(@event, @run, @relay), class: "btn btn-danger pull-right", method: :delete, data: { confirm: 'Möchten Sie diese Staffelanmeldung wirklich löschen?' } %>
+<% end %>
 
-<%= render 'form' %>
+<%= render "shared/header" %>
 
+<div class="row">
+	<%= render 'form' %>
+</div>

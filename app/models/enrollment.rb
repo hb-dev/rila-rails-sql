@@ -18,6 +18,7 @@ class Enrollment < ActiveRecord::Base
 
 	scope "Männlich", -> {where(runner_gender: "Männlich")}
 	scope "Weiblich", -> {where(runner_gender: "Weiblich")}
+	scope :payed, -> {where(payed: true)}
 
 	
 	def valid_age

@@ -1,54 +1,63 @@
-<%= bootstrap_nested_form_for([@event, @run, @relay], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-7") do |f| %>
-  <% if @relay.errors.any? %>
-    <div class="alert alert-danger">
-      <p><strong>Bitte überprüfen Sie Ihre Eingaben</strong></p>
-    </div>
-  <% end %>
-  <div class="row">
-    <div class="col-md-6">      
-      <h3>Staffel</h3>
-      <%= f.static_control nil, label: "Lauf" do %>
-        <%= @run.name %>
-      <% end %>
-      <% f.static_control nil, label: "&nbsp;".html_safe do %>
-        <%= link_to "Für anderen Lauf anmelden", select_run_event_path(@event), class: "change_run" %>
-      <% end %>
-      <%= f.text_field :name, label: 'Staffelname' %>
-      <%= f.number_field :startnumber %>
-      <h3>Läufer</h3>
-      <%= tabbable do |bar| %>
-        <% bar.tab "Läufer 1" %>
-        <% bar.tab "Läufer 2" %>
-        <% bar.tab "Läufer 3" %>
-        <% bar.tab "Läufer 4" %>
-        <%= f.fields_for :enrollments do |nf| %>
-          <% bar.tab_pane do %>        
-            <%= nf.hidden_field :id %> 
-            <%= nf.select :runner_title, ['Dr.', 'Prof.', 'Prof. Dr.'], prompt: 'Kein' %>
-            <%= nf.text_field :runner_name %>
-            <%= nf.text_field :runner_firstname %>
-            <%= nf.date_select :runner_date_of_birth, end_year: 1900, start_year: Time.now.year - 3, prompt: { day: 'Tag..', month: 'Monat..', year: 'Jahr..' } %>
-            <%= nf.select :runner_gender, ['Männlich', 'Weiblich'], prompt: 'Bitte auswählen' %>
-            <%= nf.hidden_field :run_id %>
-            <%= nf.hidden_field :event_id %>
-          <% end %>
+<%= bootstrap_nested_form_for [@event, @run, @relay], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-9" do |f| %>
+  <div class="col-sm-6">      
+    <fieldset class="panel panel-default">
+      <div class="panel-heading">Angaben zur Staffel</div>
+      <div class="panel-body">
+        <%= f.static_control nil, label: "Lauf" do %>
+          <%= @run.name %>
         <% end %>
-      <% end %> 
-    </div>
-    <div class="col-md-6">
-      <h3>Kontaktperson</h3>
-      <%= f.select :contact_title, ['Dr.', 'Prof.', 'Prof. Dr.'], prompt: 'Kein' %>
-      <%= f.text_field :contact_name %>
-      <%= f.text_field :contact_firstname %>
-      <%= f.text_field :contact_street %>
-      <%= f.text_field :contact_city %>
-      <%= f.text_field :contact_zip %>
-      <%= f.select :contact_country, options_for_select(COUNTRIES, 'Deutschland')%>
-      <%= f.text_field :contact_email %>      
-      <%= f.form_group do %>
-        <%= f.submit class: 'btn btn-success'%>
-      <% end %>
-    </div>
+        <% f.static_control nil, label: "&nbsp;".html_safe do %>
+          <%= link_to "Für anderen Lauf anmelden", select_run_event_path(@event), class: "change_run" %>
+        <% end %>
+        <%= f.text_field :name, label: 'Staffelname' %>
+        <%= f.number_field :startnumber unless @relay.new_record?  %>
+      </div>
+    </fieldset>
+    <fieldset class="panel panel-default">
+      <div class="panel-heading">Angaben der Läufer</div>
+      <div class="panel-body">
+        <p>Bitte geben Sie die Anmeldedaten der einzelnen Läufer an.</p>
+        <%= tabbable do |bar| %>
+          <% bar.tab "Läufer 1" %>
+          <% bar.tab "Läufer 2" %>
+          <% bar.tab "Läufer 3" %>
+          <% bar.tab "Läufer 4" %>
+          <%= f.fields_for :enrollments do |nf| %>
+            <% bar.tab_pane do %>        
+              <%= nf.hidden_field :id %> 
+              <%= nf.select :runner_title, ['Dr.', 'Prof.', 'Prof. Dr.'], prompt: 'Kein' %>
+              <%= nf.text_field :runner_name %>
+              <%= nf.text_field :runner_firstname %>
+              <%= nf.date_select :runner_date_of_birth, end_year: 1900, start_year: Time.now.year - 3, prompt: { day: 'Tag..', month: 'Monat..', year: 'Jahr..' } %>
+              <%= nf.select :runner_gender, ['Männlich', 'Weiblich'], prompt: 'Bitte auswählen' %>
+              <%= nf.hidden_field :run_id %>
+              <%= nf.hidden_field :event_id %>
+            <% end %>
+          <% end %>
+        <% end %> 
+      </div>
+  </div>
+  <div class="col-sm-6">
+    <fieldset class="panel panel-default">
+      <div class="panel-heading">Angaben zur Kontaktperson</div>
+      <div class="panel-body">
+        <p>Bitte geben Sie die Kontaktdaten eines Ansprechpartners für die Staffel an.</p>
+        <%= f.select :contact_title, ['Dr.', 'Prof.', 'Prof. Dr.'], prompt: 'Kein' %>
+        <%= f.text_field :contact_name %>
+        <%= f.text_field :contact_firstname %>
+        <%= f.text_field :contact_street %>
+        <%= f.text_field :contact_city %>
+        <%= f.text_field :contact_zip %>
+        <%= f.select :contact_country, options_for_select(COUNTRIES, 'Deutschland')%>
+        <%= f.text_field :contact_email %>      
+      </div>
+    </fieldset>
+  </div>
+  <div class="col-sm-6">
+    <%= f.form_group do %>
+      <%= f.submit class: 'btn btn-success'%>
+      <%= link_to "Abbrechen", event_path(@event), class: "btn btn-default" %>
+    <% end %>    
   </div>
 
 <% end %>

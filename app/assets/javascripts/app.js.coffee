@@ -4,9 +4,10 @@ dependencies = [
   'rilaServices'
   'ui.bootstrap'
   'nya.bootstrap.select'
+  'uiSwitch'
 ]
 
-config = ($routeProvider, $locationProvider ) ->
+config = ($routeProvider, $locationProvider, $httpProvider) ->
   $routeProvider
   # .when '/',
   #   controller: 'myCtrl'
@@ -21,10 +22,13 @@ config = ($routeProvider, $locationProvider ) ->
   	enabled: true
   	requireBase: false
 
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+
 angular
 	.module('rilaApp', dependencies)
 	.config [
 	  '$routeProvider'
 	  '$locationProvider'
+    '$httpProvider'
 	  config
 	]

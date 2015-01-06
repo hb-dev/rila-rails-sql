@@ -1,0 +1,33 @@
+<h3><ul class="nya-bs-select" ng-model="selectedRun">
+	<li nya-bs-option="run in runs"><a>{{run.name}}</a></li>
+</ul>
+</h3>	
+<div ng-repeat="run in runs">
+	<div ng-show="selectedRun.name == run.name">
+	  <div class="form-inline row">
+		  <div class="form-group col-sm-6">
+		    <div class="input-group">
+		      <div class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></div>
+		      <input type="text" class="form-control" placeholder="Suchen" ng-model="searchText">
+		    </div>
+		  </div>
+		  <div ng-hide="run.minis" class="form-group placement col-sm-6">
+		    <label>Platzierung anzeigen:</label>
+		    <div class="btn-group">
+		    	<button btn-checkbox ng-model="showTotal" class="btn btn-default">Gesamt</button>
+		    	<button btn-checkbox ng-model="showGender" ng-hide="run.relay" class="btn btn-default">Geschlecht</button>
+		    	<button btn-checkbox ng-model="showAge" class="btn btn-default">Altersklasse</button>
+		    </div>
+		  </div>	  	
+	  </div>
+		<div class="table-responsive" ng-hide="run.relay || run.minis" ng-init="searchText=''">
+			<%= render "events/angular/results_single" %>
+		</div>
+		<div class="table-responsive" ng-show="run.relay" ng-init="searchText=''">
+			<%= render "events/angular/results_relay" %>
+		</div>
+		<div class="table-responsive" ng-show="run.minis" ng-init="searchText=''">
+			<%= render "events/angular/results_minis" %>
+		</div>
+  </div>
+</div>

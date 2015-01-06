@@ -1,6 +1,8 @@
-<h1>Editing event</h1>
+<% content_for :topic_nav do %>
+	<%= link_to 'Löschen', @event, class: "btn btn-danger pull-right", method: :delete, data: { confirm: 'Veranstaltung und alle dazugehörigen Läufe und Anmeldungen löschen?' } %>
+<% end %>
+
+<%= render "shared/header" %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>

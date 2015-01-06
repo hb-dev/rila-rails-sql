@@ -5,9 +5,9 @@ class Event < ActiveRecord::Base
 	extend FriendlyId
   friendly_id :random_id, use: :slugged
 
-	has_many :runs
-	has_many :enrollments
-	has_many :relays
+	has_many :runs, dependent: :destroy
+	has_many :enrollments, dependent: :destroy
+	has_many :relays, dependent: :destroy
 
 	validates :name, :event_date, presence: true
 

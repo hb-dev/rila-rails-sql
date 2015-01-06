@@ -2,37 +2,33 @@ class EventsController < ApplicationController
 
   before_action :authenticate_user!
 
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :select_run, :copy_runs]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :select_run, :copy_runs, :results]
 
-  # GET /events
-  # GET /events.json
   def index
+    @page_topic = "Veranstaltungen"
     @events = Event.all
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
-    @event = Event.friendly.find(params[:id])
+    @page_topic = "Anmeldungen"
   end
 
-  # GET /events/new
   def new
+    @page_topic = "Neue Veranstaltung"
     @event = Event.new
   end
 
-  # GET /events/1/edit
   def edit
+    @page_topic = "Veranstaltung bearbeiten"
   end
 
-  # POST /events
-  # POST /events.json
   def create
+    @page_topic = "Neue Veranstaltung"
     @event = Event.new(event_params)
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event, notice: 'Veranstaltung erfolgreich erstellt.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -46,7 +42,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @event, notice: 'Veranstaltung erfolgreich aktualisiert.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -60,12 +56,13 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to events_url, notice: 'Veranstaltung erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end
 
   def select_run
+    @page_topic = "Neue Anmeldung"
     @runs = @event.runs
   end  
 
@@ -79,6 +76,10 @@ class EventsController < ApplicationController
     end
     redirect_to event_runs_path(@event)
   end
+
+  def results
+    @page_topic = "Ergebnisse"
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -94,4 +95,5 @@ class EventsController < ApplicationController
     def format_json?
       request.format.json?
     end
+
 end

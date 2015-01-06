@@ -1,5 +1,7 @@
-<%= page_header("Lauf bearbeiten") %>
+<% content_for :topic_nav do %>
+	<%= link_to 'Löschen', event_run_path(@event, @run), class: "btn btn-danger pull-right", method: :delete, data: { confirm: 'Möchten Sie den Lauf und alle dazugehörigen Anmeldungen wirklich löschen?' } %>
+<% end %>
+
+<%= render "shared/header" %>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', event_runs_path %>
