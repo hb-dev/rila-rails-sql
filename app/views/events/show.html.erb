@@ -1,5 +1,7 @@
 <%= render "shared/header" %>
 
+<%= Rails.cache %>
+
 <div class="angular-viewframe" ng-controller="EventRegistrationsCtrl" data-eventid="<%=@event.slug%>">
 	<%= render "events/angular/registrations" %>
 </div>

@@ -5,7 +5,7 @@ json.cache! do
 		json.name run.name	
 		json.relay run.relay
 		json.minis run.minis
-		json.enrollments run.enrollments.reject{|en| !en.relay_id.nil?} do |enrollment|
+		json.enrollments run.enrollments.where(relay_id: nil).order(:finishtime) do |enrollment|
 			json.startnumber enrollment.startnumber
 			json.name enrollment.runner_display_name
 			json.age_group enrollment.age_group

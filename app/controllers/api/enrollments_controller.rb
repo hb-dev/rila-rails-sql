@@ -11,8 +11,6 @@ class API::EnrollmentsController < API::BaseController
       render json: @enrollment.errors, status: :unprocessable_entity
     end
   end
-
-  
       
   def enrollment_params
     params.require(:enrollment).permit(permitted_params)

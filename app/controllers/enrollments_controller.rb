@@ -47,7 +47,7 @@ class EnrollmentsController < ApplicationController
     @runs = @event.runs.where(relay: false).collect{|r| [r.name, r.id]}
     respond_to do |format|
       if @enrollment.update(enrollment_params)
-        format.html { redirect_to event_run_enrollment_path(@event, @run, @enrollment), notice: 'Anmeldung erfolgreich aktualisiert.' }
+        format.html { redirect_to @event, notice: 'Anmeldung erfolgreich aktualisiert.' }
         format.json { render :show, status: :ok, location: @enrollment }
       else
         format.html { render :edit }

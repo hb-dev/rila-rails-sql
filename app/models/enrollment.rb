@@ -2,12 +2,12 @@ class Enrollment < ActiveRecord::Base
 	belongs_to :run
 	belongs_to :event
 	belongs_to :relay
-	validates :runner_name, :runner_firstname, :runner_gender, :runner_date_of_birth, presence:true
-	validates :runner_street, :runner_city, :runner_zip, :runner_country, presence:true, unless: "run.relay?"
-	validates :runner_contact, presence: true, if: "run.minis? || run.kids?"
+	#validates :runner_name, :runner_firstname, :runner_gender, :runner_date_of_birth, presence:true
+	#validates :runner_street, :runner_city, :runner_zip, :runner_country, presence:true, unless: "run.relay?"
+	#validates :runner_contact, presence: true, if: "run.minis? || run.kids?"
 	validate :valid_age
-	validate :date_expired
-	validates :runner_email, email: true, presence:true, unless: "run.relay?"
+	#validate :date_expired
+	#validates :runner_email, email: true, presence:true, unless: "run.relay?"
 	validates :agb, acceptance: { accept: true }
 
 	include Publicidable
@@ -15,6 +15,9 @@ class Enrollment < ActiveRecord::Base
 	before_validation :set_run_id
 	before_save :set_age_group
 	before_save :set_event_id
+
+	after_save :expire_cache, if: "finishtime_changed?"
+	after_destroy :expire_cache
 
 	scope "Männlich", -> {where(runner_gender: "Männlich")}
 	scope "Weiblich", -> {where(runner_gender: "Weiblich")}
@@ -73,7 +76,6 @@ class Enrollment < ActiveRecord::Base
 		}
 	end
 
-
 	def price
 		age_name = age <= 18 ? "child" : "adult"
 		pre = Date.today < "#{run.event.event_date.year}-07-01".to_date ? "_pre" : ""
@@ -94,15 +96,15 @@ class Enrollment < ActiveRecord::Base
 	end
 
 	def place		
-		compeditors_in_front(self.compeditors)
+		Rails.cache.fetch([self.class.name, id, "place"]) { compeditors_in_front(self.compeditors) }
 	end
 
 	def place_gender(gender)
-		gender == runner_gender ? compeditors_in_front(self.compeditors.send(gender)) : ""
+		Rails.cache.fetch([self.class.name, id, "place"]) { gender == runner_gender ? compeditors_in_front(self.compeditors.send(gender)) : "" }		
 	end
 
 	def place_age_group
-		compeditors_in_front(self.compeditors_same_age_group)
+		Rails.cache.fetch([self.class.name, id, "place_age_group"]) { compeditors_in_front(self.compeditors_same_age_group) }
 	end
 
 	def as_json options={}
@@ -138,6 +140,10 @@ class Enrollment < ActiveRecord::Base
 
 	def set_event_id
 		self.event_id = self.run.event_id
+	end
+
+	def expire_cache
+		Rails.cache.delete(self.class.name)
 	end
 
 end
